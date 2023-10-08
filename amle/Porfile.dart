@@ -1,18 +1,21 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Porfile extends StatelessWidget {
-  List<String>listAmge=["assets/image/index.jpeg"
-    ,"assets/image/index.jpeg",
-    "assets/image/index.jpeg"];
+  List<String> listAmge = [
+    "assets/image/index.jpeg",
+    "assets/image/index.jpeg",
+    "assets/image/index.jpeg"
+  ];
   // const Porfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<String>listAmge=["assets/image/index.jpeg"
-      ,"assets/image/index.jpeg",
-      "assets/image/index.jpeg"];
+    List<String> listAmge = [
+      "assets/image/index.jpeg",
+      "assets/image/index.jpeg",
+      "assets/image/index.jpeg",
+    ];
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -48,7 +51,7 @@ class Porfile extends StatelessWidget {
             indent: 20,
           ),
           Container(
-            height: 150 ,
+            height: 150,
             padding: EdgeInsets.all(8),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -60,12 +63,11 @@ class Porfile extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(listAmge[index]),
-                      fit: BoxFit.cover,
-                    )
-                  ),
+                      // borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                    image: AssetImage(listAmge[index]),
+                    fit: BoxFit.cover,
+                  )),
                 );
               },
             ),
@@ -161,7 +163,6 @@ Widget bio({
                         ),
                       ),
                     ])),
-
           ],
         ),
       ),

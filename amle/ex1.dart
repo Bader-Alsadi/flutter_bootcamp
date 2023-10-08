@@ -5,36 +5,47 @@ class Exe1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("exer 1"),
+      ),
+      body: Column(
           // mainAxisAlignment: MainAxisAlignment.values.st,
           children: [
-            expandre(str: "1",color1: Colors.pinkAccent ),
+            expandre(str: "1", color1: Colors.pinkAccent),
             Expanded(
               child: Row(
                 children: [
-                  expandre(str: "2",color1: Colors.green ),
+                  expandre(str: "2", color1: Colors.green),
                   Expanded(
                     child: Column(
                       children: [
-                        expandre(str: "3",color1: Colors.yellow ),
-                        expandre(str: "4",color1: Colors.purple ),
+                        expandre(str: "3", color1: Colors.yellow),
+                        expandre(str: "4", color1: Colors.purple),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-          ]);
-  }}
-Widget expandre ({required String str ,required Color color1}){
+          ]),
+    );
+  }
+}
+
+Widget expandre({required String str, required Color color1}) {
   print(str);
-  return Expanded(child: Container(
+  return Expanded(
+      child: Container(
     decoration: BoxDecoration(
       color: color1,
     ),
-    child: Center(child: Text(str.toString(),style: TextStyle(fontWeight: FontWeight.bold,
-    color: Colors.black),
-    ),
+    child: Center(
+      child: Text(
+        str.toString(),
+        style: TextStyle(
+            fontWeight: FontWeight.bold, color: Colors.black, fontSize: 30),
+      ),
     ),
   ));
 }
