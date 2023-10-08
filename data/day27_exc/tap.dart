@@ -1,6 +1,6 @@
-import 'package:app/taps/calls.dart';
-import 'package:app/taps/chat.dart';
-import 'package:app/taps/status.dart';
+import 'package:app/data/day27_exc/taps/calls.dart';
+import 'package:app/data/day27_exc/taps/chat.dart';
+import 'package:app/data/day27_exc/taps/status.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

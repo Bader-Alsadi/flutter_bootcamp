@@ -1,6 +1,8 @@
-import 'package:app/amle/Ex2.dart';
-import 'package:app/amle/ex1.dart';
-import 'package:app/amle/ex3.dart';
+import 'package:app/day28_ecx/q2.dart';
+import 'package:app/day28_ecx/q3/q3.dart';
+import 'package:app/day_26/Ex2.dart';
+import 'package:app/day_26/ex1.dart';
+import 'package:app/day_26/ex3.dart';
 import 'package:app/day28_ecx/q1.dart';
 import 'package:app/mr%20moh/form_login.dart';
 import 'package:app/mr%20moh/stateFul.dart';
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ConvortConst(),
+      home: ToDoList(),
       debugShowCheckedModeBanner: false,
       // initialRoute: "/home",
       onGenerateRoute: RouteManger.generRoute,

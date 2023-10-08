@@ -1,4 +1,4 @@
-import 'package:app/taps/status.dart';
+import 'package:app/data/day27_exc/taps/status.dart';
 import 'package:app/view/ProductShow.dart';
 import 'package:app/view/cart_page.dart';
 import 'package:app/view/multprod.dart';
