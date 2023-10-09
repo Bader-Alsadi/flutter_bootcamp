@@ -1,5 +1,9 @@
 import 'package:app/day28_ecx/q2.dart';
 import 'package:app/day28_ecx/q3/q3.dart';
+import 'package:app/day29_exc/footboll/Tansfer_center.dart';
+import 'package:app/day29_exc/footboll/homePag.dart';
+import 'package:app/day29_exc/footboll/news.dart';
+import 'package:app/day29_exc/searshPage.dart';
 import 'package:app/day_26/Ex2.dart';
 import 'package:app/day_26/ex1.dart';
 import 'package:app/day_26/ex3.dart';
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ToDoList(),
+      home: News(),
       debugShowCheckedModeBanner: false,
       // initialRoute: "/home",
       onGenerateRoute: RouteManger.generRoute,
