@@ -28,6 +28,7 @@ class _NewPageState extends State<NewPage> {
     var size = MediaQuery.of(context).size;
     var Padding = size.width / 15;
     return Stack(
+      // clipBehavior: Clip.none,
       children: [
         Container(
             width: size.width,
@@ -95,8 +96,7 @@ class _NewPageState extends State<NewPage> {
                         WidgetSpan(
                             child: CircleAvatar(
                           radius: 12,
-                          backgroundImage:
-                              AssetImage("assets/image/index.jpeg"),
+                          backgroundImage: AssetImage("assets/image/club1.png"),
                         )),
                         WidgetSpan(
                             child: SizedBox(
@@ -114,8 +114,7 @@ class _NewPageState extends State<NewPage> {
                         WidgetSpan(
                             child: CircleAvatar(
                           radius: 12,
-                          backgroundImage:
-                              AssetImage("assets/image/index.jpeg"),
+                          backgroundImage: AssetImage("assets/image/club3.png"),
                         )),
                       ])),
                     )

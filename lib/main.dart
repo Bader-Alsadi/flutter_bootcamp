@@ -8,6 +8,7 @@ import 'package:app/day_26/Ex2.dart';
 import 'package:app/day_26/ex1.dart';
 import 'package:app/day_26/ex3.dart';
 import 'package:app/day28_ecx/q1.dart';
+import 'package:app/mr%20moh/app_day30/rout_page.dart';
 import 'package:app/mr%20moh/form_login.dart';
 import 'package:app/mr%20moh/stateFul.dart';
 import 'package:app/view/ProductShow.dart';
@@ -25,11 +26,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: News(),
-      debugShowCheckedModeBanner: false,
-      // initialRoute: "/home",
-      onGenerateRoute: RouteManger.generRoute,
-    );
+    return Route_page();
+    
+    //
+    // MaterialApp(
+    //     home: News(),
+    //     debugShowCheckedModeBanner: false,
+    //     // initialRoute: "/home",
+    //     onGenerateRoute: RouteManger.generRoute,
+    //   );
   }
 }
