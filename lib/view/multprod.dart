@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modle/produc.dart';
+import '../modles/produc.dart';
 
 class Multipro extends StatelessWidget {
    Multipro(this.produs,{Key? key,}) : super(key: key);

@@ -6,7 +6,7 @@ import 'package:app/view/not_found.dart';
 import 'package:app/view/productDetiles.dart';
 import 'package:flutter/material.dart';
 
-import 'modle/produc.dart';
+import 'modles/produc.dart';
 
 class RouteManger {
   static Route<dynamic>? generRoute(RouteSettings settings) {

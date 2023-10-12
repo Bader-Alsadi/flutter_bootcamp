@@ -1,4 +1,4 @@
-import '../modle/produc.dart';
+import '../modles/produc.dart';
 
 class ProductController {
   List<ProductModel> _allProducts = [];

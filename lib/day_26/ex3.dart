@@ -1,42 +1,40 @@
-import 'package:flutter/cupertino.dart';
+import 'package:app/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'Porfile.dart';
 
 class Ex3 extends StatelessWidget {
-  const Ex3({Key? key}) : super(key: key);
-
+  Ex3({Key? key}) : super(key: key);
+  List<Map<String, dynamic>> listTap = [
+    {
+      "name": "profile",
+      "Icon": Icon(
+        Icons.file_open,
+        color: black,
+      ),
+    },
+    {
+      "name": "Feeds",
+      "Icon": Icon(Icons.person, color: black),
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white70,
-          title: Text(
-            "metre app bar",
-            style: TextStyle(color: Colors.black),
-          ),
-          bottom: TabBar(padding: EdgeInsets.only(top: 15), tabs: [
-            Tab(
+          backgroundColor: primary,
+          bottom: TabBar(
+              tabs: List.generate(
+            2,
+            (index) => Tab(
                 child: Text(
-                  "Profile",
-                  style: TextStyle(color: Colors.black),
+                  "${listTap[index]["name"]}",
+                  style: TextStyle(color: black),
                 ),
-                icon: Icon(
-                  Icons.file_open,
-                  color: Colors.black,
-                )),
-            Tab(
-                child: Text(
-                  "Feeds",
-                  style: TextStyle(color: Colors.black),
-                ),
-                icon: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                ))
-          ]),
+                icon: listTap[index]["Icon"]),
+          )),
         ),
         body: TabBarView(
           children: [Porfile(), Text("feeds")],

@@ -1,12 +1,12 @@
 import 'package:app/control/custom.dart';
-import 'package:app/modle/cart.dart';
-import 'package:app/modle/coustem.dart';
+import 'package:app/modles/cart.dart';
+import 'package:app/modles/coustem.dart';
 import 'package:app/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../control/proudctControl.dart';
-import '../modle/produc.dart';
+import '../modles/produc.dart';
 
 class ProdcutView extends StatelessWidget {
   ProdcutView({Key? key}) : super(key: key) {}

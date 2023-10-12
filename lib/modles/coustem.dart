@@ -1,4 +1,4 @@
-import 'package:app/modle/cart.dart';
+import 'package:app/modles/cart.dart';
 
 class Coustomer{
 late String id, name,cellPhone;

@@ -58,8 +58,11 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: phonText,
+                  maxLength: 10,
                   keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp('[0-9]+'))
+                  ],
                   decoration: InputDecoration(
                     hintText: "Enter Phone number",
                     label: Text(

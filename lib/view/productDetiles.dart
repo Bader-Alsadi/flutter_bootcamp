@@ -1,7 +1,7 @@
 import 'package:app/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../modle/produc.dart';
+import '../modles/produc.dart';
 
 class ProductDetails extends StatelessWidget {
   late ProductModel product;

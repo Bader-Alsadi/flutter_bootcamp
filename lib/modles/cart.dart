@@ -1,5 +1,5 @@
-import 'package:app/modle/coustem.dart';
-import 'package:app/modle/produc.dart';
+import 'package:app/modles/coustem.dart';
+import 'package:app/modles/produc.dart';
 
 class CartItem {
   late String id;
