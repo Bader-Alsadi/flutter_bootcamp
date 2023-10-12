@@ -1,0 +1,1 @@
+String assetIMG = "assets/image/";
