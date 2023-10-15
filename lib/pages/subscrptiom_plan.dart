@@ -9,8 +9,8 @@ import 'package:app/widgets/customsubscrption_haed.dart';
 import 'package:flutter/material.dart';
 
 class SubscrptionPlanpage extends StatefulWidget {
-   SubscrptionPlanpage({super.key});
-   static String Route = subscrption;
+  SubscrptionPlanpage({super.key});
+  static String Route = subscrption;
   @override
   State<SubscrptionPlanpage> createState() => SubscrptionPlanpageState();
 }
@@ -50,6 +50,7 @@ class SubscrptionPlanpageState extends State<SubscrptionPlanpage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: smallSpacer),
               child: customElevatedButton(
+                navigator: subscrption2,
                 TextValue: "continue",
                 backgroundColor: primary,
                 width: 350,

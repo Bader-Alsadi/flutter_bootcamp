@@ -8,6 +8,10 @@ class StartedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // foregroundDecoration: BoxDecoration(
+      //     image: DecorationImage(
+      //         image: AssetImage("assets/image/movise/movies5.jpg"),
+      //         fit: BoxFit.cover)),
       padding:
           EdgeInsets.only(bottom: 200, left: smallSpacer, right: smallSpacer),
       child: Column(

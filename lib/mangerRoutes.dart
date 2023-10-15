@@ -1,6 +1,7 @@
 import 'package:app/pages/create_account.dart';
 import 'package:app/pages/eidt_profile.dart';
 import 'package:app/pages/home_screen.dart';
+import 'package:app/pages/play_vedio.dart';
 import 'package:app/pages/sing_in.dart';
 import 'package:app/pages/start1.dart';
 import 'package:app/pages/start_by_creating_account.dart';
@@ -66,6 +67,12 @@ class RouteManger {
         {
           return MaterialPageRoute(builder: (ctx) {
             return EditProfile();
+          });
+        }
+         case playVideo:
+        {
+          return MaterialPageRoute(builder: (ctx) {
+            return PlayVideoer();
           });
         }
       // default:

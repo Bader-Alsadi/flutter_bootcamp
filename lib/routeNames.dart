@@ -9,3 +9,4 @@ const String subscrption = "subscrptionPage";
 const String subscrption2 = "subscrptionPage2";
 const String verifictionPage = "verifictionPage";
 const String editProfile = "editprofile";
+const String playVideo = "palyvideo";

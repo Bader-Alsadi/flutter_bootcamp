@@ -63,6 +63,7 @@ class _SubscrptionPlanpage2State extends State<SubscrptionPlanpage2> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: miniSpacer),
               child: customElevatedButton(
+                
                 TextValue: "continue",
                 backgroundColor: primary,
                 width: 380,
