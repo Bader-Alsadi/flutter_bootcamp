@@ -1,3 +1,6 @@
+import 'package:app/main_page.dart';
+import 'package:app/mangerRoutes.dart';
+import 'package:app/routeNames.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,14 +13,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Container();
-    
-    //
-    // MaterialApp(
-    //     home: News(),
-    //     debugShowCheckedModeBanner: false,
-    //     // initialRoute: "/home",
-    //     onGenerateRoute: RouteManger.generRoute,
-    //   );
+    return   MaterialApp(
+        // home: Man_page(),
+        debugShowCheckedModeBanner: false,
+        initialRoute: startPage,
+        onGenerateRoute: RouteManger.generRoute,
+      );
   }
 }

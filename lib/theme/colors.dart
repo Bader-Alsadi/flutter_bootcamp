@@ -2,8 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-const Color primary = Color(0xFFFFFFFF);
-const Color secondary = Color(0xFF2B2B2B);
+const Color primary = Color(0xFF30302F);
+const Color secondary = Color(0xFF383838);
+const Color divider = Color(0xFF1D1D1B);
 const Color white = Color(0xFFFFFFFF);
 const Color black = Color(0xFF000000);
-const Color red = Colors.red;
+const Color yellow = Color(0xFFF1B103);

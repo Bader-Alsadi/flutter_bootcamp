@@ -1,3 +1,11 @@
+import 'package:app/pages/create_account.dart';
+import 'package:app/pages/home_screen.dart';
+import 'package:app/pages/sing_in.dart';
+import 'package:app/pages/start1.dart';
+import 'package:app/pages/start_by_creating_account.dart';
+import 'package:app/pages/subscrptiom_plan.dart';
+import 'package:app/pages/subscrtion_plan2.dart';
+import 'package:app/pages/verification_code.dart';
 import 'package:flutter/material.dart';
 
 class Man_page extends StatefulWidget {
@@ -13,9 +21,8 @@ class _Man_pageState extends State<Man_page> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: Container(
-          
-        ),
+        
+        child: StartByCreateAccount(),
       ),
     );
   }
