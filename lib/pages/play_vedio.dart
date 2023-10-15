@@ -8,6 +8,7 @@ import 'package:app/utlis/assetsI_image.dart';
 import 'package:app/widgets/custom_divider.dart';
 import 'package:app/widgets/custom_heading.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class PlayVideoer extends StatefulWidget {
   const PlayVideoer({super.key});
@@ -17,30 +18,45 @@ class PlayVideoer extends StatefulWidget {
 }
 
 class _PlayVideoState extends State<PlayVideoer> {
+  // VideoPlayerController videoPlayerController = ();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: secondary,
-        appBar: customAppBar(),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: AppBar(
+            backgroundColor: primary,
+            leading: Icon(
+              Icons.arrow_back,
+              color: yellow,
+            ),
+            title: Text("muje hard".toUpperCase()),
+          ),
+        ),
         body: Container(
             child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          
-              
               CustomDivider(),
-              custoumHeading(
-                headingText: "Trading iv vimu",
-                trailingText: "see all",
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(text: "seasoin 1 ", style: TextStyle(color: yellow)),
+                  TextSpan(text: "seasoin 1 ", style: TextStyle(color: white)),
+                  TextSpan(text: "seasoin 1 ", style: TextStyle(color: white)),
+                ])),
               ),
               customSliderMovie(
                 listMovies: listMovies,
               ),
               CustomDivider(),
               custoumHeading(
-                headingText: " news",
+                headingText: "Recommended you",
                 trailingText: "see all",
               ),
               customSliderMovie(
