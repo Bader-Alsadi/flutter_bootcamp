@@ -24,7 +24,7 @@ class _Man_pageState extends State<Man_page> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: WishList(),
+        child: PlayVideoer(),
       ),
     );
   }

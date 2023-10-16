@@ -18,7 +18,20 @@ class PlayVideoer extends StatefulWidget {
 }
 
 class _PlayVideoState extends State<PlayVideoer> {
-  // VideoPlayerController videoPlayerController = ();
+  late VideoPlayerController videoPlayerController;
+  late Future<void> initiVidoe;
+  @override
+  void initState() {
+    videoPlayerController =
+        VideoPlayerController.asset("assets/image/movise/mov.mp4");
+    initiVidoe = videoPlayerController.initialize();
+    videoPlayerController.setLooping(true);
+    videoPlayerController.setVolume(1.0);
+    videoPlayerController.play();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,6 +54,11 @@ class _PlayVideoState extends State<PlayVideoer> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 3,
+                child: VideoPlayer(videoPlayerController),
+              ),
               CustomDivider(),
               Padding(
                 padding: const EdgeInsets.all(8.0),

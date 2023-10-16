@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:app/Data/image_value.dart';
 import 'package:app/theme/colors.dart';
 import 'package:app/theme/padding.dart';
 import 'package:app/widgets/coustom_abb_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class WishList extends StatefulWidget {
   const WishList({super.key});
@@ -164,6 +167,29 @@ class _WishListState extends State<WishList> {
                                   "action",
                                   style: TextStyle(color: yellow),
                                 ),
+                                SizedBox(
+                                  // width: 50,
+                                  child: RatingBar(
+                                    itemSize: 10,
+                                    ratingWidget: RatingWidget(
+                                        full: Icon(
+                                          Icons.star,
+                                          color: yellow,
+                                        ),
+                                        half: Icon(
+                                          Icons.star,
+                                          color: yellow,
+                                        ),
+                                        empty: Icon(
+                                          Icons.star,
+                                          color: white,
+                                        )),
+                                    onRatingUpdate: (h) {},
+                                    minRating: 1,
+                                    maxRating: 5,
+                                    initialRating: Random().nextInt(4) + 1,
+                                  ),
+                                )
                               ],
                             ),
                             Expanded(child: Container()),
