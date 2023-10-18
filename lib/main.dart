@@ -1,8 +1,10 @@
 
+import 'package:app/day36/pages/couresPage.dart';
 import 'package:app/main_page.dart';
 import 'package:app/mangerRoutes.dart';
 import 'package:app/pages/payment_mathod1.dart';
 import 'package:app/t_mogther/appliction.dart';
+import 'package:app/t_mogther/thems.dart';
 import 'package:app/theme/colors.dart';
 
 import 'package:flutter/material.dart';
@@ -54,9 +56,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Man_page(),
-      // theme: light,
-      // darkTheme: dark,
+      home: SafeArea(
+        child: CouresMangement(),
+      ),
+      theme: light,
+      darkTheme: dark,
       // themeMode: themmode.mode,
       debugShowCheckedModeBanner: false,
       // initialRoute: startPage,
