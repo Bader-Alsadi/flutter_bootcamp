@@ -1,4 +1,5 @@
 import 'package:app/pages/custom_plan_page.dart';
+import 'package:app/pages/payment_mathod1.dart';
 import 'package:flutter/material.dart';
 
 class Man_page extends StatefulWidget {
@@ -14,7 +15,7 @@ class _Man_pageState extends State<Man_page> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: CustomPlanPage(),
+        child: PlanMathod1(),
       ),
     );
   }

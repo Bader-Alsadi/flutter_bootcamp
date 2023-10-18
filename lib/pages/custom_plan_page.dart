@@ -23,7 +23,10 @@ class _CustomPlanState extends State<CustomPlanPage> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(60),
-            child: customAppBar(title: "cuttom paln")),
+            child: customAppBar(
+              title: "cuttom paln",
+              elevation: 1,
+            )),
         backgroundColor: primary,
         body: Container(
           padding: EdgeInsets.all(miniSpacer),
