@@ -2,7 +2,6 @@
 import 'package:app/day34_35/models/order.dart';
 import 'package:app/day34_35/models/pizza.dart';
 import 'package:app/day34_35/pages/order_cobtrol.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum sizePizza { smale, medium, large }

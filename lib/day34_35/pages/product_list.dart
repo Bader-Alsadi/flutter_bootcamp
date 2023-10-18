@@ -1,7 +1,6 @@
 import 'package:app/day34_35/controler/product_control.dart';
 import 'package:app/day34_35/models/product.dart';
 import 'package:app/day34_35/pages/cart_list.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProudctList extends StatefulWidget {

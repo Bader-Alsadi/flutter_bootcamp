@@ -1,4 +1,3 @@
-import 'package:app/pages/start1.dart';
 
 const String startPage = "startePage";
 const String startCreatAncouuntPage = "startByCreateAccountPage";

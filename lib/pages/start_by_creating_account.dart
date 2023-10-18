@@ -1,11 +1,9 @@
 import 'package:app/Data/start_by_create_account.dart';
-import 'package:app/Data/start_page_data.dart';
 import 'package:app/routeNames.dart';
 import 'package:app/theme/colors.dart';
 import 'package:app/theme/padding.dart';
 import 'package:app/widgets/cuntom_Elevated_button.dart';
 import 'package:app/widgets/started_create.dart';
-import 'package:app/widgets/started_page.dart';
 import 'package:flutter/material.dart';
 
 class StartByCreateAccount extends StatefulWidget {
