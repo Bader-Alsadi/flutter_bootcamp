@@ -4,6 +4,7 @@ import 'package:app/main_page.dart';
 import 'package:app/mangerRoutes.dart';
 import 'package:app/pages/payment_mathod1.dart';
 import 'package:app/t_mogther/appliction.dart';
+import 'package:app/t_mogther/day37/slidable_lectuser.dart';
 import 'package:app/t_mogther/thems.dart';
 import 'package:app/theme/colors.dart';
 
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
-        child: CouresMangement(),
+        child: SlidabLectuer(),
       ),
       theme: light,
       darkTheme: dark,

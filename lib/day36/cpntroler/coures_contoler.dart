@@ -1,6 +1,8 @@
 import 'package:app/day36/models/coures.dart';
 
 class CouresContloer {
+
+  
   List<Coures> _allCoures = [];
   List<Coures> get allCoures => _allCoures;
 
