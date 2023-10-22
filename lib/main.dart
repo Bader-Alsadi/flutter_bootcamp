@@ -1,5 +1,6 @@
-
 import 'package:app/day36/pages/couresPage.dart';
+import 'package:app/excerses/clip_path.dart';
+import 'package:app/excerses/draggable.dart';
 import 'package:app/main_page.dart';
 import 'package:app/mangerRoutes.dart';
 import 'package:app/pages/payment_mathod1.dart';
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
-        child: SlidabLectuer(),
+        child: clipPathEx(),
       ),
       theme: light,
       darkTheme: dark,
