@@ -1,4 +1,5 @@
 import 'package:app/day36/pages/couresPage.dart';
+import 'package:app/day38/fetuer/pages/home_page.dart';
 import 'package:app/excerses/clip_path.dart';
 import 'package:app/excerses/draggable.dart';
 import 'package:app/main_page.dart';
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
-        child: clipPathEx(),
+        child: HomePageSemaster(),
       ),
       theme: light,
       darkTheme: dark,
@@ -69,6 +70,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteManger.generRoute,
     );
   }
+}
+
+class _HomePageSemasterState {
 }
 
 class pageThem extends StatefulWidget {
