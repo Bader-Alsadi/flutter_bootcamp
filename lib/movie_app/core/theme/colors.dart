@@ -8,3 +8,4 @@ const Color divider = Color(0xFF1D1D1B);
 const Color white = Color(0xFFFFFFFF);
 const Color black = Color(0xFF000000);
 const Color yellow = Color(0xFFF1B103);
+ Color yellowWith= yellow.withOpacity(0.7);

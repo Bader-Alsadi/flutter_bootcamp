@@ -5,7 +5,7 @@ List<Map<String, dynamic>> listIconsBar = [
   {
     "Icon": Icon(
       Icons.movie_outlined,
-      color: yellow,
+      color: yellowWith,
       size: 30,
     ),
     "name": "Movie"
@@ -13,7 +13,7 @@ List<Map<String, dynamic>> listIconsBar = [
   {
     "Icon": Icon(
       Icons.play_arrow_outlined,
-      color: yellow,
+      color: yellowWith,
       size: 30,
     ),
     "name": "Play"
@@ -21,7 +21,7 @@ List<Map<String, dynamic>> listIconsBar = [
   {
     "Icon": Icon(
       Icons.photo_size_select_actual_outlined,
-      color: yellow,
+      color: yellowWith,
       size: 30,
     ),
     "name": "seres"
@@ -29,7 +29,7 @@ List<Map<String, dynamic>> listIconsBar = [
   {
     "Icon": Icon(
       Icons.play_circle_outline_rounded,
-      color: yellow,
+      color: yellowWith,
       size: 30,
     ),
     "name": "Drama"
@@ -37,7 +37,7 @@ List<Map<String, dynamic>> listIconsBar = [
   {
     "Icon": Icon(
       Icons.playlist_add_check,
-      color: yellow,
+      color: yellowWith,
       size: 30,
     ),
     "name": "Newest"

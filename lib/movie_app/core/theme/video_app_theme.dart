@@ -13,9 +13,9 @@ ThemeData dark = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
           // textStyle: TextStyle(color: yellow),
-          backgroundColor: Colors.purple,
+          backgroundColor: yellow,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(8),
           ))),
   appBarTheme: AppBarTheme(
       backgroundColor: white,

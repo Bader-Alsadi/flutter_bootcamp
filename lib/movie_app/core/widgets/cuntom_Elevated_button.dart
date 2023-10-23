@@ -9,6 +9,7 @@ class customElevatedButton extends StatelessWidget {
       this.height = 55,
       this.width,
       this.navigator = null,
+      this.arguments,
       this.textColor});
   String? TextValue;
   Color? textColor;
@@ -16,6 +17,7 @@ class customElevatedButton extends StatelessWidget {
   double? width;
   double? height;
   String? navigator;
+  Object? arguments ;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class customElevatedButton extends StatelessWidget {
         onPressed: navigator == null
             ? () {}
             : () {
-                Navigator.pushNamed(context, navigator!);
+                Navigator.pushNamed(context, navigator!,arguments: arguments);
               },
         child: Text(
           TextValue!.toUpperCase(),

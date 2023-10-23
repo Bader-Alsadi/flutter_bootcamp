@@ -14,7 +14,8 @@ class custoumHeading extends StatelessWidget {
     return ListTile(
       title: Text(
         headingText.toUpperCase(),
-        style: TextStyle(color: mainColor, fontSize: 20),
+        style: TextStyle(
+            color: mainColor, fontWeight: FontWeight.bold, fontSize: 20),
       ),
       trailing: TextButton(
         onPressed: null,

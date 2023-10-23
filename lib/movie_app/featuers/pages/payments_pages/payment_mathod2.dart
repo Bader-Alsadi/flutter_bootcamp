@@ -1,8 +1,10 @@
-
+import 'package:app/movie_app/core/routeNames.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/movie_app/core/widgets/coustom_abb_bar.dart';
 import 'package:app/movie_app/core/widgets/cuntom_Elevated_button.dart';
+import 'package:app/movie_app/featuers/pages/payments_pages/widgets/Custom_Text_Field_OutLine.dart';
+import 'package:app/movie_app/featuers/pages/payments_pages/widgets/custom_smale_field.dart';
 import 'package:flutter/material.dart';
 
 class PaymentMathod extends StatefulWidget {
@@ -34,7 +36,9 @@ class _PaymentMathodState extends State<PaymentMathod> {
                         black.withOpacity(0.7), BlendMode.darken))),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: miniSpacer),
+            padding: EdgeInsets.symmetric(
+                    horizontal: smallSpacer, vertical: smallSpacer)
+                .copyWith(top: 0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -49,25 +53,18 @@ class _PaymentMathodState extends State<PaymentMathod> {
                         "Card number",
                         style: TextStyle(color: white),
                       ),
-                      Icon(
-                        Icons.sd_card_outlined,
-                        color: yellow,
-                      )
+                      Image.asset(
+                        "assets/image/movise/mastercard.png",
+                        height: 40,
+                        width: 50,
+                      ),
                     ],
                   ),
                   SizedBox(
                     height: miniSpacer,
                   ),
-                  Container(
-                    padding: EdgeInsets.all(miniSpacer - 5),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: white.withOpacity(0.5)),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextFormField(
-                        decoration: InputDecoration(
-                            disabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none)),
+                  CustomTextFieldOutLine(
+                    width: MediaQuery.sizeOf(context).width,
                   ),
                   Row(
                     children: [
@@ -82,6 +79,7 @@ class _PaymentMathodState extends State<PaymentMathod> {
                     height: spacer,
                   ),
                   customElevatedButton(
+                    navigator: payment2,
                     TextValue: "pay now",
                     textColor: yellow,
                     backgroundColor: divider,
@@ -93,40 +91,6 @@ class _PaymentMathodState extends State<PaymentMathod> {
           )
         ],
       ),
-    );
-  }
-
-  Column coustomSmallTextFiled(BuildContext context,
-      {required String headText}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(
-          height: smallSpacer,
-        ),
-        Text(
-          headText,
-          style: TextStyle(color: white),
-        ),
-        SizedBox(
-          height: miniSpacer,
-        ),
-        Container(
-          padding: EdgeInsets.all(miniSpacer - 5),
-          decoration: BoxDecoration(
-            border: Border.all(color: white.withOpacity(0.5)),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
-            child: TextFormField(
-                decoration: InputDecoration(
-                    disabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none)),
-          ),
-        ),
-      ],
     );
   }
 }

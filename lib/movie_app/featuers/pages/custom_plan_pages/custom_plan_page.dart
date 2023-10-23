@@ -1,11 +1,14 @@
 import 'package:app/movie_app/core/Data/duartion_radio.dart';
 import 'package:app/movie_app/core/Data/video_duality_radio.dart';
+import 'package:app/movie_app/core/routeNames.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/movie_app/core/widgets/coustom_abb_bar.dart';
 import 'package:app/movie_app/core/widgets/cuntom_Elevated_button.dart';
 import 'package:app/movie_app/core/widgets/custom_divider.dart';
 import 'package:app/movie_app/core/widgets/custom_title_subtitle.dart';
+import 'package:app/movie_app/featuers/pages/custom_plan_pages/widgets/cumstom_dadio.dart';
+import 'package:app/movie_app/featuers/pages/custom_plan_pages/widgets/custom_list_tile_divece.dart';
 import 'package:flutter/material.dart';
 
 class CustomPlanPage extends StatefulWidget {
@@ -33,7 +36,7 @@ class _CustomPlanState extends State<CustomPlanPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customRadio(
+              CustomRadio(
                   context: context,
                   title: "Duartion",
                   groupValue: listDuartionValue[0],
@@ -42,7 +45,7 @@ class _CustomPlanState extends State<CustomPlanPage> {
                 colorDivder: white.withOpacity(.3),
                 thickness: 1,
               ),
-              customRadio(
+              CustomRadio(
                   context: context,
                   title: "video quallty",
                   groupValue: videoRadioValus[1],
@@ -51,45 +54,12 @@ class _CustomPlanState extends State<CustomPlanPage> {
                 colorDivder: white.withOpacity(.3),
                 thickness: 1,
               ),
-              ListTile(
-                title: Text(
-                  "divece".toUpperCase(),
-                  textAlign: TextAlign.start,
-                  style: TextStyle(color: white, fontSize: 17),
-                ),
-                subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 2.4,
-                        height: smallSpacer,
-                        child: Text(
-                          "Screen you can watch from any where",
-                          style: TextStyle(color: white.withOpacity(0.5)),
-                        ),
-                      ),
-                      Text(
-                        "Chosce number of divece ",
-                        style: TextStyle(color: white, fontSize: 17),
-                      ),
-                    ]),
-                trailing: Column(
-                  children: [
-                    SizedBox(
-                      height: smallSpacer + 2,
-                    ),
-                    Icon(
-                      Icons.arrow_drop_down,
-                      color: white,
-                    ),
-                  ],
-                ),
-              ),
+              CustomListTileDivece(),
               CustomDivider(
                 colorDivder: white.withOpacity(.3),
                 thickness: 1,
               ),
-              customRadio(
+              CustomRadio(
                   context: context,
                   title: "cancel any time",
                   groupValue: "yes",
@@ -104,6 +74,7 @@ class _CustomPlanState extends State<CustomPlanPage> {
               Align(
                 alignment: Alignment.center,
                 child: customElevatedButton(
+                  navigator: payment1,
                   TextValue: "continue \$89",
                   backgroundColor: divider,
                   textColor: yellow,
@@ -127,59 +98,5 @@ class _CustomPlanState extends State<CustomPlanPage> {
             ],
           ),
         ));
-  }
-
-  Widget customRadio(
-      {required BuildContext context,
-      String title = "test",
-      required List<String> radioValues,
-      required String groupValue}) {
-    return SizedBox(
-      height: radioValues.length > 4
-          ? MediaQuery.of(context).size.height / 6.6
-          : MediaQuery.of(context).size.height / 8,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: miniSpacer,
-          ),
-          Text(
-            title.toUpperCase(),
-            style: TextStyle(color: white),
-          ),
-          Wrap(
-              direction: Axis.horizontal,
-              spacing: 10,
-              children: List.generate(
-                  radioValues.length,
-                  (index) => SizedBox(
-                        width: MediaQuery.of(context).size.width / 4.6,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Flexible(
-                              child: Radio(
-                                  value: radioValues[index],
-                                  activeColor: yellow,
-                                  groupValue: groupValue,
-                                  onChanged: (value) {
-                                    groupValue = value!;
-                                    setState(() {});
-                                  }),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              radioValues[index],
-                              style: TextStyle(color: white),
-                            ),
-                          ],
-                        ),
-                      ))),
-        ],
-      ),
-    );
   }
 }

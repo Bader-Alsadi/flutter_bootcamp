@@ -1,15 +1,17 @@
+import 'package:app/movie_app/core/Data/buttom_Values.dart';
 import 'package:app/movie_app/core/Data/subscrption_page_data.dart';
+import 'package:app/movie_app/core/routeNames.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/movie_app/core/widgets/cuntom_Elevated_button.dart';
 import 'package:app/movie_app/core/widgets/custom_divider.dart';
-import 'package:app/movie_app/core/widgets/custom_text_fild_wit_text.dart';
+import 'package:app/movie_app/core/widgets/custom_text_and_triling.dart';
 import 'package:app/movie_app/core/widgets/custom_title_subtitle.dart';
 import 'package:app/movie_app/core/widgets/customsubscrption_haed.dart';
 import 'package:flutter/material.dart';
 
 class SubscrptionPlanpage2 extends StatefulWidget {
-   SubscrptionPlanpage2({super.key});
+  SubscrptionPlanpage2({super.key});
 
   @override
   State<SubscrptionPlanpage2> createState() => _SubscrptionPlanpage2State();
@@ -42,16 +44,15 @@ class _SubscrptionPlanpage2State extends State<SubscrptionPlanpage2> {
             SizedBox(
               height: smallSpacer,
             ),
-            customButtomBar(context: context, height: 40),
+            customButtomBar(context: context, height: 45),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: miniSpacer),
               child: Column(
                 children: List.generate(
                     listPaiment[slsetcedIndex].length,
-                    (index) => customTextFildwithtext(
+                    (index) => customTextAndTriling(
                           labelFild: listPaiment[slsetcedIndex][index]["name"]!,
-                          suffixIcon: listPaiment[slsetcedIndex][index]
-                              ["price"]!,
+                          triling: listPaiment[slsetcedIndex][index]["price"]!,
                         )),
               ),
             ),
@@ -61,7 +62,7 @@ class _SubscrptionPlanpage2State extends State<SubscrptionPlanpage2> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: miniSpacer),
               child: customElevatedButton(
-                
+                navigator: customPlan,
                 TextValue: "continue",
                 backgroundColor: primary,
                 width: 380,
@@ -99,10 +100,10 @@ class _SubscrptionPlanpage2State extends State<SubscrptionPlanpage2> {
                       setState(() {});
                     },
                     child: Text(
-                      "test",
+                      buttomValues[index].toUpperCase(),
                       style: TextStyle(
                           color: slsetcedIndex == index ? black : white,
-                          fontSize: 20),
+                          fontSize: 18),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor:

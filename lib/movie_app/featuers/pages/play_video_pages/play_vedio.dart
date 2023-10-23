@@ -1,8 +1,7 @@
 import 'package:app/movie_app/core/Data/buttonValue.dart';
 import 'package:app/movie_app/core/Data/list_movies.dart';
 import 'package:app/movie_app/core/routeNames.dart';
-import 'package:app/movie_app/featuers/pages/home_pages/home_screen.dart';
-
+import 'package:app/movie_app/core/widgets/custom_movies_slider.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/utlis/assetsI_image.dart';
