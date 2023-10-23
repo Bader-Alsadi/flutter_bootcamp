@@ -1,10 +1,14 @@
-import 'package:app/Data/edit_Page_data.dart';
+import 'package:app/day38/core/widgits/customTextFiled.dart';
+import 'package:app/day38/core/widgits/custom_rich_text.dart';
 import 'package:app/day38/fetuer/control/semaster_control.dart';
+
 import 'package:app/day38/fetuer/models/semester.dart';
+import 'package:app/day38/fetuer/pages/course.dart';
 import 'package:app/theme/padding.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../models/course.dart';
 
 class HomePageSemaster extends StatefulWidget {
   const HomePageSemaster({super.key});
@@ -33,7 +37,7 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
         title: Text("GPA Calculater"),
       ),
       floatingActionButton: SizedBox(
-        width: 150,
+        width: 180,
         child: FloatingActionButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -53,35 +57,89 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
           padding: EdgeInsets.all(miniSpacer),
           child: semesters.isEmpty
               ? notthinTodisplay(context)
-              : ExpansionPanelList(
-                  expansionCallback: (panelIndex, isExpanded) {},
-                  children: List.generate(
-                      semesters.length,
-                      (index) => ExpansionPanel(
-                            isExpanded: true,
-                            body: Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Credits:0"),
-                                    Text("Garde:0"),
-                                    ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Add Courses"))
-                                  ]),
-                            ),
-                            headerBuilder: (context, isExpanded) {
-                              return Text(
-                                  "${semesters[index].name} : ${semesters[index].year}");
-                            },
-                          )),
+              : Column(
+                  children: [
+                    topPart(context),
+                    ExpansionPanelList(
+                      expansionCallback: (panelIndex, isExpanded) {},
+                      children: List.generate(
+                          semesters.length,
+                          (index) => ExpansionPanel(
+                                isExpanded: true,
+                                body: Align(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Credits:0"),
+                                        Text("Garde:0"),
+                                        ElevatedButton(
+                                            onPressed: () async {
+                                              List<Coures> result =
+                                                  await Navigator.push(context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) {
+                                                return CouresPage(
+                                                    coures: semesters[index]
+                                                        .semasterCourses);
+                                              }));
+                                              semesters[index]
+                                                  .semasterCourses
+                                                  .addAll(result);
+                                            },
+                                            child: Text("Add Courses"))
+                                      ]),
+                                ),
+                                headerBuilder: (context, isExpanded) {
+                                  return Text(
+                                      "semaster :${semesters[index].name}  ${semesters[index].year}");
+                                },
+                              )),
+                    ),
+                  ],
                 ),
         ),
       ),
     );
+  }
+
+  Container topPart(BuildContext context) {
+    return Container(
+                    padding: EdgeInsets.all(10),
+                    height: MediaQuery.sizeOf(context).height / 4,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "${semesters.first.name} ${semesters.first.year}",
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Icon(Icons.edit)
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customRichText(
+                                title: "Your GPA ",
+                                subTitle: "3.85",
+                                colorSubtitle: Colors.green,
+                              ),
+                              customRichText(
+                                title: "Total Unites ",
+                                subTitle: "16",
+                                colorSubtitle: Colors.red,
+                              ),
+                            ],
+                          )
+                        ]),
+                  );
   }
 
   Future<dynamic> custom_show_dialog(BuildContext context) {
@@ -97,20 +155,22 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
                   controllerv: semasterSe,
                 ),
                 CustomTextFormFiled(
+                  isnumber: true,
                   label: "semater year",
                   controllerv: sematery,
                 ),
-                SizedBox(
-                  child: ElevatedButton(
-                      onPressed: () {
-                        semasterControl.addSemasyer(
-                            semester: Semester(
-                                name: semasterSe.text, year: sematery.text));
-                        print(semasterSe.text);
-                        setState(() {});
-                      },
-                      child: Text("Save")),
-                )
+                ElevatedButton(
+                    onPressed: () {
+                      int id = semesters.isEmpty ? 1 : semesters.last.id + 1;
+                      semasterControl.addSemasyer(
+                          semester: Semester(
+                              id: id,
+                              name: semasterSe.text,
+                              year: sematery.text));
+
+                      setState(() {});
+                    },
+                    child: Text("Save"))
               ],
             ),
           );
@@ -134,23 +194,6 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class CustomTextFormFiled extends StatelessWidget {
-  CustomTextFormFiled({
-    required this.label,
-    super.key,
-    controllerv,
-  });
-  late String label;
-  TextEditingController? controllerv;
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controllerv,
-      decoration: InputDecoration(label: Text(this.label)),
     );
   }
 }

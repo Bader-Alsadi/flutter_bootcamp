@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SaveEditPage extends StatefulWidget {
   SaveEditPage({super.key, required this.title, this.coures = null});
   late String title;
-  Coures? coures;
+  Coures1? coures;
 
   @override
   State<SaveEditPage> createState() => _SaveEditPageState();
@@ -56,7 +56,7 @@ class _SaveEditPageState extends State<SaveEditPage> {
                 onPressed: () {
                   Navigator.pop(
                       context,
-                      Coures(
+                      Coures1(
                           name: couresName.text,
                           noHouers: int.parse(couresNoHoures.text)));
                 },

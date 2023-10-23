@@ -16,7 +16,7 @@ class CouresMangement extends StatefulWidget {
 
 class _CouresMangementState extends State<CouresMangement> {
   CouresContloer concou = CouresContloer();
-  List<Coures> coures = [];
+  List<Coures1> coures = [];
 
   @override
   void initState() {
