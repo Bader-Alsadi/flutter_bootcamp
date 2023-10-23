@@ -1,5 +1,5 @@
-import 'package:app/theme/colors.dart';
-import 'package:app/theme/padding.dart';
+import 'package:app/movie_app/core/theme/colors.dart';
+import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:flutter/material.dart';
 
 class customRichText extends StatelessWidget {

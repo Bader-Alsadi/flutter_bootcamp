@@ -3,7 +3,7 @@ import 'package:app/day38/core/widgits/customTextFiled.dart';
 import 'package:app/day38/core/widgits/custom_rich_text.dart';
 import 'package:app/day38/fetuer/control/course_controler.dart';
 import 'package:app/day38/fetuer/models/course.dart';
-import 'package:app/theme/colors.dart';
+import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class CouresPage extends StatefulWidget {

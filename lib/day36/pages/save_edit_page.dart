@@ -1,6 +1,6 @@
 import 'package:app/day36/models/coures.dart';
 import 'package:app/day36/widgets/custom_filedForm.dart';
-import 'package:app/theme/padding.dart';
+import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:flutter/material.dart';
 
 class SaveEditPage extends StatefulWidget {

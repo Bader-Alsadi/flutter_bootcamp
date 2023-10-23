@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:app/day36/cpntroler/coures_contoler.dart';
 import 'package:app/day36/models/coures.dart';
 import 'package:app/day36/pages/save_edit_page.dart';
-import 'package:app/theme/padding.dart';
+import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

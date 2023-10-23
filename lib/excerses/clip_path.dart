@@ -1,4 +1,4 @@
-import 'package:app/Data/media_icon.dart';
+import 'package:app/movie_app/core/Data/media_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

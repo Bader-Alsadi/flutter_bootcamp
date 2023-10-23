@@ -4,7 +4,7 @@ import 'package:app/day38/fetuer/control/semaster_control.dart';
 
 import 'package:app/day38/fetuer/models/semester.dart';
 import 'package:app/day38/fetuer/pages/course.dart';
-import 'package:app/theme/padding.dart';
+import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,6 +19,7 @@ class HomePageSemaster extends StatefulWidget {
 
 class _HomePageSemasterState extends State<HomePageSemaster> {
   List<Semester> semesters = [];
+  List<bool> expanded = [];
   SemasterControl semasterControl = SemasterControl();
   TextEditingController semasterSe = TextEditingController();
   TextEditingController sematery = TextEditingController();
@@ -61,11 +62,14 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
                   children: [
                     topPart(context),
                     ExpansionPanelList(
-                      expansionCallback: (panelIndex, isExpanded) {},
+                      expansionCallback: (panelIndex, isExpanded) {
+                        expanded[panelIndex] =
+                            expanded[panelIndex] ? false : true;
+                      },
                       children: List.generate(
                           semesters.length,
                           (index) => ExpansionPanel(
-                                isExpanded: true,
+                                isExpanded: expanded[index],
                                 body: Align(
                                   alignment: Alignment.bottomLeft,
                                   child: Column(
@@ -108,38 +112,37 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
 
   Container topPart(BuildContext context) {
     return Container(
-                    padding: EdgeInsets.all(10),
-                    height: MediaQuery.sizeOf(context).height / 4,
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${semesters.first.name} ${semesters.first.year}",
-                                style: TextStyle(fontSize: 30),
-                              ),
-                              Icon(Icons.edit)
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              customRichText(
-                                title: "Your GPA ",
-                                subTitle: "3.85",
-                                colorSubtitle: Colors.green,
-                              ),
-                              customRichText(
-                                title: "Total Unites ",
-                                subTitle: "16",
-                                colorSubtitle: Colors.red,
-                              ),
-                            ],
-                          )
-                        ]),
-                  );
+      padding: EdgeInsets.all(10),
+      height: MediaQuery.sizeOf(context).height / 4,
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "${semesters.first.name} ${semesters.first.year}",
+              style: TextStyle(fontSize: 30),
+            ),
+            Icon(Icons.edit)
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            customRichText(
+              title: "Your GPA ",
+              subTitle: "3.85",
+              colorSubtitle: Colors.green,
+            ),
+            customRichText(
+              title: "Total Unites ",
+              subTitle: "16",
+              colorSubtitle: Colors.red,
+            ),
+          ],
+        )
+      ]),
+    );
   }
 
   Future<dynamic> custom_show_dialog(BuildContext context) {
@@ -167,6 +170,7 @@ class _HomePageSemasterState extends State<HomePageSemaster> {
                               id: id,
                               name: semasterSe.text,
                               year: sematery.text));
+                      expanded.add(false);
 
                       setState(() {});
                     },
