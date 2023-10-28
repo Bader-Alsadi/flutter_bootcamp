@@ -76,9 +76,9 @@ class _CustomPlanState extends State<CustomPlanPage> {
                 child: customElevatedButton(
                   navigator: payment1,
                   TextValue: "continue \$89",
-                  backgroundColor: divider,
+                  backgroundColor: bottomColor,
                   textColor: yellow,
-                  width: 300,
+                  width: 350,
                 ),
               ),
               SizedBox(
@@ -87,7 +87,7 @@ class _CustomPlanState extends State<CustomPlanPage> {
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
-                  width: 300,
+                  width: 350,
                   child: customTitleSubtitle(
                     tilte: "by sigrin up you to agree to our privcey",
                     subtitle: "privecy and trems",

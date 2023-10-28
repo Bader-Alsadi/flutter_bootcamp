@@ -1,3 +1,4 @@
+import 'package:app/movie_app/core/Data/data_darwer.dart';
 import 'package:app/movie_app/core/Data/icon_bar_data.dart';
 import 'package:app/movie_app/core/Data/image_value.dart';
 import 'package:app/movie_app/core/Data/list_movies.dart';
@@ -22,7 +23,38 @@ class _MainPageState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: secondary,
+        drawer: Drawer(
+          child: Column(
+            children: [
+              Container(
+                color: primary,
+                child: UserAccountsDrawerHeader(
+                    accountEmail: null,
+                    accountName: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 35,
+                          backgroundImage: AssetImage("assets/image/index.jpeg"),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("bader alsadi"),
+                            Text("baderalsadi@gmail.com")
+                          ],
+                        )
+                      ],
+                    )),
+              ),
+              for (int i = 0; i < drawerData.length; i++)
+                ListTile(
+                  leading: drawerData[i]["icon"],
+                  title: Text(drawerData[i]["name"]),
+                )
+            ],
+          ),
+        ),
         appBar: customAppBar(context),
         body: Container(
             child: SingleChildScrollView(
@@ -32,7 +64,9 @@ class _MainPageState extends State<HomeScreen> {
               customSlider(
                 imageVlue: imageVlues,
               ),
-              customIconSlider(context, listIcons: listIconsBar),
+              CustomIconSlider(
+                listIcons: listIconsBar,
+              ),
               CustomDivider(),
               custoumHeading(
                 headingText: "Trading iv vimu",

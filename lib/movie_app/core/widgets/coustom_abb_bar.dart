@@ -2,7 +2,7 @@ import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class customAppBar extends StatelessWidget {
-  customAppBar({super.key, this.title, this.elevation = 0});
+  customAppBar({super.key, this.title, this.elevation = 3});
   String? title;
   double elevation;
   @override
@@ -13,7 +13,7 @@ class customAppBar extends StatelessWidget {
         Icons.arrow_back,
         color: yellow,
       ),
-      backgroundColor: secondary,
+      backgroundColor: primary,
       title: Text(
         title!.toUpperCase(),
         style: TextStyle(color: white, fontWeight: FontWeight.bold),

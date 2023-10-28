@@ -8,7 +8,7 @@ ThemeData dark = ThemeData(
   textTheme: TextTheme(
       titleMedium: TextStyle(
     fontSize: 20,
-    color: yellow,
+    color: white,
   )),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

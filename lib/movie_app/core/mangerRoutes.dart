@@ -1,15 +1,19 @@
 import 'package:app/movie_app/core/routeNames.dart';
+import 'package:app/movie_app/featuers/pages/category/category.dart';
+import 'package:app/movie_app/featuers/pages/category/category_payment.dart';
 import 'package:app/movie_app/featuers/pages/create_account_pages/create_account.dart';
 import 'package:app/movie_app/featuers/pages/create_account_pages/start_by_creating_account.dart';
 import 'package:app/movie_app/featuers/pages/create_account_pages/verification_code.dart';
 import 'package:app/movie_app/featuers/pages/custom_plan_pages/custom_plan_page.dart';
 import 'package:app/movie_app/featuers/pages/edit_profile/eidt_profile.dart';
 import 'package:app/movie_app/featuers/pages/home_pages/home_screen.dart';
+import 'package:app/movie_app/featuers/pages/notevction_page/notevction_page.dart';
 import 'package:app/movie_app/featuers/pages/payments_pages/payment_mathod1.dart';
 import 'package:app/movie_app/featuers/pages/payments_pages/payment_mathod2.dart';
 import 'package:app/movie_app/featuers/pages/play_video_pages/play_vedio.dart';
 import 'package:app/movie_app/featuers/pages/singIn_page/sing_in.dart';
 import 'package:app/movie_app/featuers/pages/startup_pages/start1.dart';
+import 'package:app/movie_app/featuers/pages/subscrption_pages/my_subscption.dart';
 import 'package:app/movie_app/featuers/pages/subscrption_pages/subscrptiom_plan.dart';
 import 'package:app/movie_app/featuers/pages/subscrption_pages/subscrtion_plan2.dart';
 
@@ -98,6 +102,36 @@ class RouteManger {
           // List<Map> getList = settings.arguments as List<Map>;
           return MaterialPageRoute(builder: (ctx) {
             return PlanMathod1();
+          });
+        }
+
+        case categorypay:
+        {
+          // List<Map> getList = settings.arguments as List<Map>;
+          return MaterialPageRoute(builder: (ctx) {
+            return CategoryPayment();
+          });
+        }
+
+        case notiFactionPage:
+        {
+          // List<Map> getList = settings.arguments as List<Map>;
+          return MaterialPageRoute(builder: (ctx) {
+            return NotiFactionPage();
+          });
+        }
+         case mySubscption:
+        {
+          // List<Map> getList = settings.arguments as List<Map>;
+          return MaterialPageRoute(builder: (ctx) {
+            return MySubscption();
+          });
+        }
+         case category:
+        {
+          // List<Map> getList = settings.arguments as List<Map>;
+          return MaterialPageRoute(builder: (ctx) {
+            return Category();
           });
         }
       // default:

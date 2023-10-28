@@ -1,4 +1,3 @@
-
 const String startPage = "startePage";
 const String startCreatAncouuntPage = "startByCreateAccountPage";
 const String createAccount = "createAccountPage";
@@ -12,3 +11,7 @@ const String playVideo = "palyvideo";
 const String customPlan = "customPlan";
 const String payment1 = "payment1";
 const String payment2 = "payment2";
+const String categorypay = "categorypay";
+const String notiFactionPage = "NotiFactionPage";
+const String mySubscption = "mySubscption";
+const String category = "category";

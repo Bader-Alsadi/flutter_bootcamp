@@ -44,7 +44,7 @@ class _PaymentMathodState extends State<PaymentMathod> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 2,
+                    height: MediaQuery.of(context).size.height / 2.5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,7 +79,7 @@ class _PaymentMathodState extends State<PaymentMathod> {
                     height: spacer,
                   ),
                   customElevatedButton(
-                    navigator: payment2,
+                    navigator: category,
                     TextValue: "pay now",
                     textColor: yellow,
                     backgroundColor: divider,

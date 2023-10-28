@@ -2,6 +2,7 @@ import 'package:app/movie_app/core/Data/buttom_Values.dart';
 import 'package:app/movie_app/core/routeNames.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
+import 'package:app/movie_app/core/widgets/coustom_abb_bar.dart';
 import 'package:app/movie_app/core/widgets/cuntom_Elevated_button.dart';
 import 'package:app/movie_app/core/widgets/custom_divider.dart';
 import 'package:app/movie_app/core/widgets/custom_title_subtitle.dart';
@@ -20,24 +21,13 @@ class SubscrptionPlanpageState extends State<SubscrptionPlanpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: secondary,
-      appBar: AppBar(
-        elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: white,
-        ),
-        backgroundColor: secondary,
-        title: Text(
-          "subscrption plan ".toUpperCase(),
-          style: TextStyle(color: white),
-        ),
-      ),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: customAppBar(title: "cubscrption plan")),
       body: Container(
         child: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            CustomDivider(),
             customSubscrptionHeading(),
             SizedBox(
               height: smallSpacer,
@@ -55,7 +45,8 @@ class SubscrptionPlanpageState extends State<SubscrptionPlanpage> {
               child: customElevatedButton(
                 navigator: subscrption2,
                 TextValue: "continue",
-                backgroundColor: primary,
+                backgroundColor: bottomColor,
+                textColor: yellow,
                 width: 350,
               ),
             ),
@@ -98,7 +89,7 @@ class SubscrptionPlanpageState extends State<SubscrptionPlanpage> {
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
-                          slsetcedIndex == index ? yellow : primary,
+                          slsetcedIndex == index ? yellow : bottomColor,
                     ),
                   ),
                 )));

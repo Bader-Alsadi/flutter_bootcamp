@@ -21,7 +21,7 @@ class _SingInPageState extends State<SingInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: secondary,
+      
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
           child: customAppBar(
