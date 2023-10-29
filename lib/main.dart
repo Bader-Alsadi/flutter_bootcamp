@@ -12,9 +12,13 @@
 
 // import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
+import 'package:app/day40/faetuer/pages/cart_page.dart';
+import 'package:app/day42/faetuer/pages/page_post.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
 
 // ApplictioThem themmode = ApplictioThem();
 
@@ -52,25 +56,25 @@
 
 // // stateless widget
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: SafeArea(
-//         child: HomePageSemaster(),
-//       ),
-//       theme: light,
-//       darkTheme: dark,
-//       // themeMode: themmode.mode,
-//       debugShowCheckedModeBanner: false,
-//       // initialRoute: startPage,
-//       onGenerateRoute: RouteManger.generRoute,
-//     );
-//   }
-// }
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SafeArea(
+        child: PostPage(),
+      ),
+      // theme: light,
+      // darkTheme: dark,
+      // themeMode: themmode.mode,
+      debugShowCheckedModeBanner: false,
+      // initialRoute: startPage,
+      // onGenerateRoute: RouteManger.generRoute,
+    );
+  }
+}
 
 // class _HomePageSemasterState {
 // }
