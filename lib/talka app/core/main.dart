@@ -1,5 +1,4 @@
-import 'package:app/movie_app/featuers/pages/startup_pages/start1.dart';
-import 'package:app/talka%20app/featuer/pages/mane_page/main_page.dart';
+import 'package:app/talka%20app/featuer/pages/rout_page/root_page.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -15,7 +14,7 @@ class MainPoint extends StatelessWidget {
       // theme: dark,
       debugShowCheckedModeBanner: false,
       // onGenerateRoute: RouteManger.generRoute,
-      home: SafeArea(child: MainPage()),
+      home: Directionality(textDirection: TextDirection.rtl, child: RootPage()),
     );
   }
 }
