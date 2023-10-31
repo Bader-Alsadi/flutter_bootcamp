@@ -27,14 +27,9 @@ class _TodoState extends State<Todo> {
                   MaterialPageRoute(builder: (context) {
                 return AddTask();
               }));
-
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text(code == 200 ? "done" : "not dane"),
-                    );
-                  });
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(code == 200 ? "done" : "not dane"),
+              ));
             },
             child: Text("add to do")),
       ),
@@ -58,9 +53,16 @@ class _TodoState extends State<Todo> {
                                   style: TextStyle(color: white)),
                             ),
                             title: Text(snapshot.data![index].todo!),
-                            subtitle: Text(snapshot.data![index].completed!
-                                ? "completed"
-                                : "uncompleted"),
+                            subtitle:
+                                // Checkbox(
+                                //     value: snapshot.data![index].completed!,
+                                //     onChanged: (value) {
+                                //       snapshot.data![index].completed != value;
+                                //       setState(() {});
+                                //     }),
+                                Text(snapshot.data![index].completed!
+                                    ? "completed"
+                                    : "uncompleted"),
                             trailing: PopupMenuButton(itemBuilder: (context) {
                               return [
                                 PopupMenuItem(
@@ -68,16 +70,11 @@ class _TodoState extends State<Todo> {
                                   onTap: () async {
                                     int? code = await taskContoller.deletData(
                                         t: snapshot.data![index]);
-
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: Text(code == 200
-                                                ? "done"
-                                                : "not dane"),
-                                          );
-                                        });
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(
+                                          code == 200 ? "done" : "not dane"),
+                                    ));
                                   },
                                 ),
                                 PopupMenuItem(
@@ -89,16 +86,11 @@ class _TodoState extends State<Todo> {
                                         add: false,
                                       );
                                     }));
-
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: Text(code == 200
-                                                ? "done"
-                                                : "not dane"),
-                                          );
-                                        });
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(
+                                          code == 200 ? "done" : "not dane"),
+                                    ));
                                   },
                                 )
                               ];
