@@ -12,8 +12,8 @@
 
 // import 'package:flutter/material.dart';
 
-import 'package:app/day40/faetuer/pages/cart_page.dart';
-import 'package:app/day42/faetuer/pages/page_post.dart';
+
+import 'package:app/day46/featuer/pages/toDo_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
-        child: PostPage(),
+        child: Todo(),
       ),
       // theme: light,
       // darkTheme: dark,

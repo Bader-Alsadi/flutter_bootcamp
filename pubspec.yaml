@@ -45,6 +45,8 @@ dependencies:
   google_fonts: ^4.0.1
   font_awesome_flutter: ^10.6.0
   flutter_slidable: ^3.0.0
+  dio: ^5.3.3
+  flutter_svg: ^2.0.8
 
 dev_dependencies:
   flutter_test:
