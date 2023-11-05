@@ -15,3 +15,5 @@ const String categorypay = "categorypay";
 const String notiFactionPage = "NotiFactionPage";
 const String mySubscption = "mySubscption";
 const String category = "category";
+const String wishlist = "wishlis";
+

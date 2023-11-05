@@ -1,13 +1,11 @@
-
 import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class CustomFlotingAppBar extends StatelessWidget {
-   CustomFlotingAppBar({
-    super.key,
-    this.flotingWidgetOnAppBar =null,
-  });
+  CustomFlotingAppBar(
+      {super.key, this.flotingWidgetOnAppBar = null, this.height = 55});
+  double height;
   Widget? flotingWidgetOnAppBar;
   @override
   Widget build(BuildContext context) {
@@ -15,12 +13,14 @@ class CustomFlotingAppBar extends StatelessWidget {
       children: [
         ClipPath(
           child: Container(
-            height: MediaQuery.sizeOf(context).height / 7,
+            height: height,
             color: secondary,
           ),
           clipper: AppBarClipper(),
         ),
-      this.flotingWidgetOnAppBar==null?Container():this.flotingWidgetOnAppBar!,
+        this.flotingWidgetOnAppBar == null
+            ? Container()
+            : this.flotingWidgetOnAppBar!,
       ],
     );
   }

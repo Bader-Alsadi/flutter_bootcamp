@@ -9,9 +9,14 @@ class customAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: this.elevation,
-      leading: Icon(
-        Icons.arrow_back,
-        color: yellow,
+      leading: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Icon(
+          Icons.arrow_back,
+          color: yellow,
+        ),
       ),
       backgroundColor: primary,
       title: Text(

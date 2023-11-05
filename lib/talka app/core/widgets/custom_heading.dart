@@ -1,21 +1,31 @@
-
+import 'package:app/talka%20app/core/widgets/custom_icon_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomHeading extends StatelessWidget {
   CustomHeading(
       {super.key,
       this.heading = "لا يوجد نص",
-      this.icon = null,
+      this.svg_path = null,
       this.triling = null});
   String heading;
-  Icon? icon;
+  String? svg_path;
   Widget? triling;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        icon == null ? Icon(Icons.cancel) : icon!,
+        svg_path == null
+            ? CustomIconContaner(
+                backgroundColor: Colors.transparent,
+                svg_path: "assets/svg_image/pin-minus-svgrepo-com.svg",
+                padding: 15,
+              )
+            : CustomIconContaner(
+                svg_path: svg_path!,
+                backgroundColor: Colors.transparent,
+              ),
         Text(heading),
         Spacer(),
         triling == null ? Container() : triling!

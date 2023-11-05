@@ -1,4 +1,3 @@
-
 import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:app/talka%20app/core/theme/padding.dart';
 import 'package:app/talka%20app/core/widgets/custom_icon_container.dart';
@@ -53,22 +52,18 @@ class CustomCardItem extends StatelessWidget {
                 Row(
                   children: [
                     CustomIconContaner(
+                      svg_path: "assets/svg_image/add-svgrepo-com.svg",
+                      svg_color: white,
                       borderRAdiusValue: 10,
-                      icon: Icons.add,
-                      height: 30,
-                      iconColor: white,
-                      size: 15,
-                      padding: 11,
+                      padding: 15,
                       backgroundColor: orange,
                     ),
                     Text("     2     "),
                     CustomIconContaner(
+                      svg_path: "assets/svg_image/remove-svgrepo-com.svg",
+                      svg_color: orange,
                       borderRAdiusValue: 10,
-                      icon: Icons.remove,
-                      height: 30,
-                      iconColor: orange,
-                      size: 15,
-                      padding: 11,
+                      padding: 15,
                       backgroundColor: orange.withOpacity(0.2),
                     )
                   ],

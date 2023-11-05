@@ -13,10 +13,13 @@ class customTitleAndSubtitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title),
+        Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
         Text(
           subTitle,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.grey),
         )
       ],
     );

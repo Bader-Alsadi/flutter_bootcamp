@@ -18,6 +18,5 @@ ThemeData dark = ThemeData(
             borderRadius: BorderRadius.circular(8),
           ))),
   appBarTheme: AppBarTheme(
-      backgroundColor: white,
-      titleTextStyle: TextStyle(color: black, fontSize: 20)),
+      backgroundColor: white, titleTextStyle: TextStyle(fontSize: 20)),
 );

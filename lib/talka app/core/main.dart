@@ -1,3 +1,4 @@
+import 'package:app/talka%20app/core/mangerRoutes.dart';
 import 'package:app/talka%20app/featuer/pages/rout_page/root_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MainPoint extends StatelessWidget {
     return MaterialApp(
       // theme: dark,
       debugShowCheckedModeBanner: false,
-      // onGenerateRoute: RouteManger.generRoute,
+      onGenerateRoute: RouteManger.generRoute,
       home: Directionality(textDirection: TextDirection.rtl, child: RootPage()),
     );
   }

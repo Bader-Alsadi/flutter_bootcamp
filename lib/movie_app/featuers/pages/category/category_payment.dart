@@ -49,7 +49,7 @@ class _CategoryPaymentState extends State<CategoryPayment> {
                 TextSpan(text: "\$ 549\n")
               ])),
               customElevatedButton(
-                navigator: mySubscption,
+                navigator: wishlist,
                 TextValue: "pay and confirem",
                 textColor: yellow,
                 backgroundColor: bottomColor,

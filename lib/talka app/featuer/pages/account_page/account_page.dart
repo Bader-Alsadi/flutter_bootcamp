@@ -26,11 +26,11 @@ class _AccountPageState extends State<AccountPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomFlotingAppBar(
+              height: MediaQuery.sizeOf(context).height / 7,
               flotingWidgetOnAppBar: CustomCounterFloting(),
             ),
             Text("عن المستخدم"),
             multiCustomSettingRwo(
-              
               numberOfRow: 3,
             ),
             Text("اخرى"),

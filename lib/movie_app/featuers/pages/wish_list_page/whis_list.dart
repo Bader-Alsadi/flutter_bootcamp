@@ -1,13 +1,9 @@
-import 'dart:math';
-
-import 'package:app/movie_app/core/Data/image_value.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/movie_app/core/widgets/coustom_abb_bar.dart';
 import 'package:app/movie_app/core/widgets/custom_image_with_rating_bar.dart';
 import 'package:app/movie_app/featuers/pages/wish_list_page/widgets/custom_head_with_icon_triler.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class WishList extends StatefulWidget {
   const WishList({super.key});
@@ -21,7 +17,6 @@ class _WishListState extends State<WishList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: secondary,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: customAppBar(

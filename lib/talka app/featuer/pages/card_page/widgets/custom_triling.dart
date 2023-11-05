@@ -1,6 +1,5 @@
-
-import 'package:app/movie_app/core/theme/colors.dart';
-import 'package:app/talka%20app/core/widgets/custom_icon.dart';
+import 'package:app/talka%20app/core/theme/color.dart';
+import 'package:app/talka%20app/core/widgets/custom_icon_container.dart';
 import 'package:flutter/material.dart';
 
 class CustomTrlingWidgets extends StatelessWidget {
@@ -16,8 +15,10 @@ class CustomTrlingWidgets extends StatelessWidget {
           color: primary, borderRadius: BorderRadius.circular(30)),
       child: Row(
         children: [
-          CustomIcon(
-            icon: Icons.lock_clock,
+          CustomIconContaner(
+            backgroundColor: Colors.transparent,
+            svg_path: "assets/svg_image/clock-seven-thirty-svgrepo-com.svg",
+            padding: 15,
           ),
           Text("أضافة المزيد")
         ],

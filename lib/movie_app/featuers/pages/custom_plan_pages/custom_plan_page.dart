@@ -74,7 +74,7 @@ class _CustomPlanState extends State<CustomPlanPage> {
               Align(
                 alignment: Alignment.center,
                 child: customElevatedButton(
-                  navigator: payment1,
+                  navigator: payment2,
                   TextValue: "continue \$89",
                   backgroundColor: bottomColor,
                   textColor: yellow,

@@ -6,8 +6,9 @@ import 'package:app/talka%20app/featuer/pages/account_page/widgets/custom_Title_
 import 'package:flutter/material.dart';
 
 class CustomSettingRow extends StatelessWidget {
-  CustomSettingRow({super.key, this.title = "", this.subTitle = ""});
-  late String title, subTitle;
+  CustomSettingRow(
+      {super.key, this.title = "", this.subTitle = "", this.svg_path = null});
+  String? title, subTitle, svg_path;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,21 +17,25 @@ class CustomSettingRow extends StatelessWidget {
         color: white,
         borderRadius: BorderRadius.circular(borderRaduis),
       ),
-      child: Row(
-        children: [
-          CustomIconContaner(
-            icon: Icons.edit,
-          ),
-          SizedBox(
-            width: miniSpacer,
-          ),
-          customTitleAndSubtitle(
-            subTitle: subTitle,
-            title: title,
-          ),
-          Spacer(),
-          Icon(Icons.arrow_forward_ios)
-        ],
+      child: SizedBox(
+        child: Row(
+          children: [
+            CustomIconContaner(
+              svg_path: svg_path,
+              padding: 10,
+            ),
+            SizedBox(
+              width: miniSpacer,
+            ),
+            customTitleAndSubtitle(
+              
+              subTitle: subTitle!,
+              title: title!,
+            ),
+            Spacer(),
+            Icon(Icons.arrow_forward_ios)
+          ],
+        ),
       ),
     );
   }

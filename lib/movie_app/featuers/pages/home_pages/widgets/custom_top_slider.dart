@@ -1,3 +1,4 @@
+import 'package:app/movie_app/core/routeNames.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -8,12 +9,17 @@ class customSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
         itemCount: imageVlue.length,
-        itemBuilder: (_, index, index2) => ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                imageVlue[index],
-                fit: BoxFit.fill,
-                width: 270,
+        itemBuilder: (_, index, index2) => InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, playVideo);
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  imageVlue[index],
+                  fit: BoxFit.fill,
+                  width: 270,
+                ),
               ),
             ),
         options: CarouselOptions(

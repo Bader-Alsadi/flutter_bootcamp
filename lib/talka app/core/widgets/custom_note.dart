@@ -1,8 +1,7 @@
-import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/talka%20app/core/theme/borderRAdius.dart';
+import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:app/talka%20app/core/widgets/custom_contanier.dart';
 import 'package:app/talka%20app/core/widgets/custom_heading.dart';
-import 'package:app/talka%20app/featuer/pages/card_page/card_page.dart';
 import 'package:flutter/material.dart';
 
 class CoutomNotes extends StatelessWidget {
@@ -16,7 +15,7 @@ class CoutomNotes extends StatelessWidget {
       child: Column(children: [
         CustomHeading(
           heading: "ملاحظات",
-          icon: Icon(Icons.note),
+          svg_path: "assets/svg_image/note-text-svgrepo-com.svg",
         ),
         Divider(),
         Container(
@@ -29,8 +28,7 @@ class CoutomNotes extends StatelessWidget {
                 border: InputBorder.none,
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: secondary),
-                    borderRadius:
-                        BorderRadius.circular(borderRaduis))),
+                    borderRadius: BorderRadius.circular(borderRaduis))),
           ),
         )
       ]),

@@ -16,6 +16,7 @@ import 'package:app/movie_app/featuers/pages/startup_pages/start1.dart';
 import 'package:app/movie_app/featuers/pages/subscrption_pages/my_subscption.dart';
 import 'package:app/movie_app/featuers/pages/subscrption_pages/subscrptiom_plan.dart';
 import 'package:app/movie_app/featuers/pages/subscrption_pages/subscrtion_plan2.dart';
+import 'package:app/movie_app/featuers/pages/wish_list_page/whis_list.dart';
 
 import 'package:flutter/material.dart';
 
@@ -132,6 +133,13 @@ class RouteManger {
           // List<Map> getList = settings.arguments as List<Map>;
           return MaterialPageRoute(builder: (ctx) {
             return Category();
+          });
+        }
+           case wishlist:
+        {
+          // List<Map> getList = settings.arguments as List<Map>;
+          return MaterialPageRoute(builder: (ctx) {
+            return WishList();
           });
         }
       // default:
