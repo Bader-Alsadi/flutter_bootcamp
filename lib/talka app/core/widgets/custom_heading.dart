@@ -26,7 +26,10 @@ class CustomHeading extends StatelessWidget {
                 svg_path: svg_path!,
                 backgroundColor: Colors.transparent,
               ),
-        Text(heading),
+        Text(
+          heading,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         Spacer(),
         triling == null ? Container() : triling!
       ],

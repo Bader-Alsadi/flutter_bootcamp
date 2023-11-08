@@ -1,5 +1,4 @@
 import 'package:app/day45/core/helper/dio_conniction.dart';
-import 'package:app/day48/core/constant/api_url.dart';
 import 'package:app/day48/featuer/models/course_model.dart';
 
 class CourseContller {

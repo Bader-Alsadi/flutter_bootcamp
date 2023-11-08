@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -24,13 +23,7 @@ class CustomSlider extends StatelessWidget {
             ),
         options: CarouselOptions(
           height: MediaQuery.sizeOf(context).height / 4.8,
-          initialPage: 0,
-          onPageChanged: (index, reason) {
-            
-            // imageDisplayIndex = reason.index;
-            // print(imageDisplayIndex);
-            // setState(() {});
-          },
+          autoPlayCurve: Curves.easeInQuad,
           autoPlay: true,
         ));
   }

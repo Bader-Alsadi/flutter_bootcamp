@@ -77,7 +77,7 @@ class _CardPageState extends State<CardPage> {
                   ],
                 ),
               ),
-              CoutomNotes()
+              CustomNotes()
             ],
           ),
         ),

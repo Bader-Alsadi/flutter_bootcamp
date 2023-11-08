@@ -15,7 +15,7 @@ class customTitleAndSubtitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         Text(
           subTitle,

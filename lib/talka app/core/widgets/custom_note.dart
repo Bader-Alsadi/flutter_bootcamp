@@ -4,8 +4,8 @@ import 'package:app/talka%20app/core/widgets/custom_contanier.dart';
 import 'package:app/talka%20app/core/widgets/custom_heading.dart';
 import 'package:flutter/material.dart';
 
-class CoutomNotes extends StatelessWidget {
-  const CoutomNotes({
+class CustomNotes extends StatelessWidget {
+  const CustomNotes({
     super.key,
   });
 
