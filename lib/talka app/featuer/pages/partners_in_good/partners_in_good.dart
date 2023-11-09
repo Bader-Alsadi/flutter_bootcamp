@@ -6,8 +6,9 @@ import 'package:app/talka%20app/core/widgets/custom_contanier.dart';
 import 'package:app/talka%20app/core/widgets/custom_delivry_contanier.dart';
 import 'package:app/talka%20app/core/widgets/custom_from_container.dart';
 import 'package:app/talka%20app/core/widgets/custom_note.dart';
+import 'package:app/talka%20app/core/widgets/custom_pick_pictuer.dart';
 import 'package:app/talka%20app/core/widgets/custom_to_form.dart';
-import 'package:app/talka%20app/featuer/pages/account_page/widgets/custom_setting_row.dart';
+import 'package:app/talka%20app/featuer/pages/partners_in_good/widgets/tbra_type.dart';
 import 'package:flutter/material.dart';
 
 class PartenersInGood extends StatefulWidget {
@@ -41,15 +42,12 @@ class _PartenersInGoodState extends State<PartenersInGood> {
                 ),
               ),
             ),
-            CustomContainer(
-              child: CustomSettingRow(
-                title: "نوع التبرع ",
-                subTitle: "يرجى تحديد نوع التبرع ",
-                svg_path: "assets/svg_image/bag-svgrepo-com.svg",
-              ),
-            ),
+            CustomTbraType(),
             CustomDelivryContanier(),
-            CustomNotes()
+            CustomNotes(),
+            CustomPickPictuer(
+              option: " اختياري",
+            )
           ],
         ),
       ),

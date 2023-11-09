@@ -23,7 +23,7 @@ class CustomSlider extends StatelessWidget {
             ),
         options: CarouselOptions(
           height: MediaQuery.sizeOf(context).height / 4.8,
-          autoPlayCurve: Curves.easeInQuad,
+          autoPlayCurve: Curves.easeIn,
           autoPlay: true,
         ));
   }

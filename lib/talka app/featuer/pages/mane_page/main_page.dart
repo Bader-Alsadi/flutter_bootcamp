@@ -4,7 +4,6 @@ import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:app/talka%20app/core/widgets/custom_app_bar_flaoting.dart';
 import 'package:app/talka%20app/core/widgets/custom_icon_container.dart';
 import 'package:app/talka%20app/featuer/pages/mane_page/widgets/custom_slider.dart';
-import 'package:app/talka%20app/featuer/pages/partners_in_good/partners_in_good.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -139,7 +138,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, partenersInGood);
+                    Navigator.pushNamed(context, talkaPlusPage);
                   },
                   child: Container(
                       child: Wrap(

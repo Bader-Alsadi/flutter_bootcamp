@@ -1,11 +1,13 @@
+import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/talka%20app/core/theme/borderRAdius.dart';
 import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomIconContaner extends StatelessWidget {
-  CustomIconContaner(
+class CustomIconContanerWithHeading extends StatelessWidget {
+  CustomIconContanerWithHeading(
       {super.key,
+      this.hading = "",
       this.svg_color = secondary,
       this.backgroundColor = primary,
       this.borderRAdiusValue = borderRaduis,
@@ -13,7 +15,7 @@ class CustomIconContaner extends StatelessWidget {
       this.padding = 25});
   double padding, borderRAdiusValue;
   Color backgroundColor, svg_color;
-  String? svg_path;
+  String? svg_path, hading;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,26 @@ class CustomIconContaner extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.circular(borderRAdiusValue)),
       child: Center(
-        child: SvgPicture.asset(
-          svg_path!,
-          colorFilter: ColorFilter.mode(svg_color, BlendMode.srcIn),
-          height: 25,
-          width: 25,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              height: miniSpacer,
+            ),
+            SvgPicture.asset(
+              svg_path!,
+              colorFilter: ColorFilter.mode(svg_color, BlendMode.srcIn),
+              height: 25,
+              width: 25,
+            ),
+            Text(
+              hading!,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(color: Colors.grey),
+            ),
+          ],
         ),
       ),
     );
