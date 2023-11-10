@@ -15,6 +15,7 @@
 
 import 'package:app/day48/featuer/pages/department/department_page.dart';
 import 'package:app/day49/featuer/views/catogry_page.dart';
+import 'package:app/day52/featuer/views/blog_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
-        child: DepartmentPage(),
+        child: BlogPage(),
       ),
       // theme: light,
       // darkTheme: dark,
