@@ -15,7 +15,7 @@ class CustomNotes extends StatelessWidget {
       child: Column(children: [
         CustomHeading(
           heading: "ملاحظات",
-          svg_path: "assets/svg_image/note-text-svgrepo-com.svg",
+          svg_path: "assets/svg_image/icons/note.svg",
         ),
         Divider(),
         Container(
@@ -24,7 +24,7 @@ class CustomNotes extends StatelessWidget {
             maxLines: 7,
             decoration: InputDecoration(
                 hintText: "هل هناك شي تريد ان تخبرنا به",
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
                 border: InputBorder.none,
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: secondary),

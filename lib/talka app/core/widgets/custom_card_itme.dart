@@ -18,8 +18,8 @@ class CustomCardItem extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             CutstomImageWithRaduis(
-              height: 60,
-              width: 55,
+              height: 50,
+              width: 45,
             ),
             Positioned(
               bottom: 48,
@@ -37,9 +37,9 @@ class CustomCardItem extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("يسبشثصب سيبشثقل سيبشصث سبصشب"),
+            Text("قشري بلخم"),
             CustomText(
-              text: "يسبشثصب سيبشثقل سيبشصث سبصشب",
+              text: "الحجم الاساسي",
             ),
             Row(
               children: [

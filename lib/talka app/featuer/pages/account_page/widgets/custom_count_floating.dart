@@ -24,7 +24,7 @@ class CustomCounterFloting extends StatelessWidget {
       child: Row(
         children: [
           CustomIconContaner(
-            svg_path: "assets/svg_image/timer-svgrepo-com.svg",
+            svg_path: "assets/svg_image/icons/timer.svg",
           ),
           SizedBox(
             width: miniSpacer,
@@ -35,7 +35,7 @@ class CustomCounterFloting extends StatelessWidget {
           ),
           Spacer(),
           CustomIconContaner(
-            svg_path: "assets/svg_image/note-text-svgrepo-com.svg",
+            svg_path: "assets/svg_image/icons/empty-order.svg",
           ),
           SizedBox(
             width: miniSpacer,

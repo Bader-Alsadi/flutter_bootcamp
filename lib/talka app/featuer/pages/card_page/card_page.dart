@@ -1,5 +1,6 @@
 import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:app/talka%20app/core/widgets/custom_app_bar_flaoting.dart';
+import 'package:app/talka%20app/core/widgets/custom_appbar_2.dart';
 import 'package:app/talka%20app/core/widgets/custom_card_itme.dart';
 import 'package:app/talka%20app/core/widgets/custom_contanier.dart';
 import 'package:app/talka%20app/core/widgets/custom_heading.dart';
@@ -23,28 +24,8 @@ class _CardPageState extends State<CardPage> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
-        child: Container(
-          height: 100,
-          color: secondary,
-          child: Stack(children: [
-            Positioned(
-                left: 30,
-                top: 50,
-                child: CustomIconContaner(
-                  svg_color: white,
-                  backgroundColor: white.withOpacity(0.5),
-                  svg_path: "assets/svg_image/bin-svgrepo-com.svg",
-                  padding: 20,
-                )),
-            Positioned(
-                right: 30,
-                top: 60,
-                child: Text(
-                  "السلة",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: white, fontSize: 20),
-                ))
-          ]),
+        child: customAppBar2(
+          title: "السلة",
         ),
       ),
       backgroundColor: primary,
@@ -53,9 +34,13 @@ class _CardPageState extends State<CardPage> {
           child: Column(
             children: [
               CustomFlotingAppBar(
+                height: 100,
                 flotingWidgetOnAppBar: CustomContainer(
                     child: CustomFlotingContainer(
-                  imageWidget: CutstomImageWithRaduis(),
+                  imageWidget: CutstomImageWithRaduis(
+                    height: 60,
+                    width: 60,
+                  ),
                 )),
               ),
               CustomContainer(
@@ -63,7 +48,7 @@ class _CardPageState extends State<CardPage> {
                   children: [
                     CustomHeading(
                       heading: "العناصر المضافة ",
-                      svg_path: "assets/svg_image/bag-1-svgrepo-com.svg",
+                      svg_path: "assets/svg_image/icons/cart.svg",
                       triling: CustomTrlingWidgets(),
                     ),
                     Divider(),

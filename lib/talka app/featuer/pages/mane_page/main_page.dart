@@ -1,9 +1,9 @@
-import 'package:app/movie_app/core/theme/padding.dart';
-import 'package:app/talka%20app/core/routeNames.dart';
 import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:app/talka%20app/core/widgets/custom_app_bar_flaoting.dart';
-import 'package:app/talka%20app/core/widgets/custom_icon_container.dart';
+import 'package:app/talka%20app/core/widgets/custom_contanier.dart';
+import 'package:app/talka%20app/featuer/pages/mane_page/widgets/body_staggredGrid.dart';
 import 'package:app/talka%20app/featuer/pages/mane_page/widgets/custom_slider.dart';
+import 'package:app/talka%20app/featuer/pages/mane_page/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -32,67 +32,15 @@ class _MainPageState extends State<MainPage> {
   // int? imageDisplayIndex;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primary,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
-        child: Container(
-          // height: ,
-          color: secondary,
-          child: Stack(
-            children: [
-              Positioned(
-                  left: 25,
-                  top: 50,
-                  child: CustomIconContaner(
-                    svg_color: white,
-                    backgroundColor: white.withOpacity(0.5),
-                    svg_path: "assets/svg_image/bell-bing-svgrepo-com.svg",
-                    padding: 20,
-                  )),
-              AnimatedOpacity(
-                  opacity: _scrollPosition == 0 ? 0 : 1,
-                  duration: Duration(milliseconds: 500),
-                  child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "الرئسية",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: white,
-                            fontSize: 20),
-                      ))),
-              AnimatedOpacity(
-                opacity: _scrollPosition == 0 ? 1 : 0,
-                duration: Duration(milliseconds: 500),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: RichText(
-                      text: TextSpan(children: [
-                    TextSpan(
-                      text: " اهلا و سهلا بدر  ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: white,
-                          fontSize: 20),
-                    ),
-                    TextSpan(text: "\n"),
-                    TextSpan(
-                      text: "التوصيل الى :",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: white,
-                          fontSize: 20),
-                    ),
-                  ])),
-                ),
-              ),
-            ],
-          ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: primary,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80),
+          child: MainAppBar(scrollPosition: _scrollPosition),
         ),
-      ),
-      body: CustomScrollView(controller: _scrollController, slivers: [
-        SliverToBoxAdapter(
+        body: SingleChildScrollView(
+          controller: _scrollController,
           child: Container(
             margin: EdgeInsets.all(0),
             child: Column(
@@ -101,22 +49,12 @@ class _MainPageState extends State<MainPage> {
                   height: MediaQuery.sizeOf(context).height / 7,
                   flotingWidgetOnAppBar: CustomSlider(),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(
-                      horizontal: smallSpacer - 10, vertical: smallSpacer),
-                  padding: EdgeInsets.symmetric(
-                      vertical: miniSpacer + 5, horizontal: miniSpacer),
-                  width: MediaQuery.sizeOf(context).width,
-                  decoration: BoxDecoration(
-                      color: white, borderRadius: BorderRadius.circular(14)),
+                CustomContainer(
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "توصيل الطعام",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,68 +62,24 @@ class _MainPageState extends State<MainPage> {
                           Expanded(
                             child: Text(
                               "لا تشيل هم الجوع...طعام شراب,واجبات سريعة,اكل بيت,حلويات,ايسكريم...كله موجود ومن افخم الامكان ",
-                              style: TextStyle(color: black.withOpacity(0.7)),
+                              style: TextStyle(color: black.withOpacity(0.5)),
                             ),
                           ),
-                          Icon(
-                            Icons.access_alarm,
-                            size: 50,
+                          Image.asset(
+                            "assets/talak_images/food_delivery.jpg",
+                            height: 80,
                           )
                         ],
                       )
                     ],
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, talkaPlusPage);
-                  },
-                  child: Container(
-                      child: Wrap(
-                    runSpacing: miniSpacer + 5,
-                    direction: Axis.horizontal,
-                    children: List.generate(
-                      6,
-                      (index) => Container(
-                        decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        width: MediaQuery.sizeOf(context).width / 2 -
-                            (miniSpacer * 3),
-                        margin:
-                            EdgeInsets.symmetric(horizontal: miniSpacer - 2),
-                        padding: EdgeInsets.all(miniSpacer),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "توصيل بلاس",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
-                            ),
-                            Text(
-                              " تشيل هم الجوع...طعام شراب,واجبات سريعة,اكل بيت,حلويات,ايسكريم...كله موجود ومن افخم الامكان ",
-                              softWrap: true,
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Icon(
-                                Icons.abc,
-                                size: 50,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-                )
+                bodyStaggeredGrid()
               ],
             ),
           ),
         ),
-      ]),
+      ),
     );
   }
 }

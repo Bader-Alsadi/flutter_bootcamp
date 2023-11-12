@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 ThemeData dark = ThemeData(
   // floatingActionButtonTheme: FloatingActionButtonThemeData(
   //     backgroundColor: yellow, iconSize: 20, foregroundColor: white),
+  fontFamily: "Montserrat",
   scaffoldBackgroundColor: primary,
   textTheme: TextTheme(
-      titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      titleMedium: TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  )),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
           // textStyle: TextStyle(color: yellow),

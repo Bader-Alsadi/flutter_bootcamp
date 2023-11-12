@@ -14,7 +14,10 @@ class CustomFlotingAppBar extends StatelessWidget {
         ClipPath(
           child: Container(
             height: height,
-            color: secondary,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/talak_images/app_bar_cuter.jpg"),
+                    fit: BoxFit.fitWidth)),
           ),
           clipper: AppBarClipper(),
         ),

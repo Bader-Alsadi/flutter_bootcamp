@@ -1,3 +1,4 @@
+import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:app/talka%20app/core/widgets/custom_icon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,12 +24,12 @@ class CustomHeading extends StatelessWidget {
                 padding: 15,
               )
             : CustomIconContaner(
+                svg_color: secondary,
                 svg_path: svg_path!,
                 backgroundColor: Colors.transparent,
               ),
         Text(
           heading,
-          style: Theme.of(context).textTheme.titleMedium,
         ),
         Spacer(),
         triling == null ? Container() : triling!

@@ -14,16 +14,18 @@ class CustomSlider extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  "assets/image/${index + 1}.jpg",
-                  width: MediaQuery.sizeOf(context).width,
-                  fit: BoxFit.fill,
+                child: Container(
+                  child: Image.asset(
+                    "assets/image/${index + 1}.jpg",
+                    width: MediaQuery.sizeOf(context).width,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
         options: CarouselOptions(
           height: MediaQuery.sizeOf(context).height / 4.8,
-          autoPlayCurve: Curves.easeIn,
+          autoPlayCurve: Curves.linear,
           autoPlay: true,
         ));
   }
