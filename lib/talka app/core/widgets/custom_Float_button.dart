@@ -41,7 +41,8 @@ class customFlotingButton extends StatelessWidget {
       },
       child: Container(
         child: SvgPicture.asset(
-          "assets/svg_image/phone-calling-svgrepo-com.svg",
+          "assets/svg_image/icons/call-calling.svg",
+          height: 35,
           colorFilter: ColorFilter.mode(white, BlendMode.srcIn),
         ),
       ),

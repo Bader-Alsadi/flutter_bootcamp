@@ -15,8 +15,7 @@ class OrderPage extends StatefulWidget {
   State<OrderPage> createState() => _OrderPageState();
 }
 
-class _OrderPageState extends State<OrderPage>
-    with SingleTickerProviderStateMixin {
+class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
   late TabController controller;
   @override
   void initState() {
