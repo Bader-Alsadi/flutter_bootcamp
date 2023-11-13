@@ -48,7 +48,7 @@ class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
           lables.length,
           (index) => CustomAnimtionItmeBar(
               index: index,
-              path2: paths_2[index],
+              // path2: paths_2[index],
               label: lables[index],
               controller: _controllers![index],
               lottiePath: paths[index]),
@@ -77,12 +77,12 @@ class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
   NavigationDestination CustomAnimtionItmeBar(
       {required String label,
       required int index,
-      required String path2,
+      
       required String lottiePath,
       required AnimationController controller}) {
     return NavigationDestination(
         icon: index != selectePage
-            ? SvgPicture.asset(path2)
+            ? SvgPicture.asset("assets/svg_image/icons/buttom-nav-bar-icon-${index=1}.svg")
             : Lottie.asset(
                 lottiePath,
                 controller: controller,

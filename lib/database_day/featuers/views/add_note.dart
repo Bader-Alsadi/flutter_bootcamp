@@ -46,7 +46,6 @@ class _AddNoteState extends State<AddNote> {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(message)));
           Navigator.pop(context);
-          // setState(() {});
         },
         child: Icon(Icons.add),
       ),

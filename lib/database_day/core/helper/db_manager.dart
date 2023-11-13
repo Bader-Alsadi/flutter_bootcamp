@@ -25,7 +25,7 @@ class DBmanager {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         await db.execute("""
 create table $TBL_NAME (
@@ -34,6 +34,24 @@ create table $TBL_NAME (
   $COL_DESCRPTION text not null ,
   $COL_DATE varchar(255) not null ,
   $COL_STATUS INTEGER default 0
+)
+""");
+ db.execute("""
+create table if not exsit users (
+  $COL_ID INTEGER PRIMARY KEY autoincrement ,
+  name varchar(255) not null,
+  emale text not null ,
+  password varchar(255) not null 
+)
+""");
+      },
+      onUpgrade: (db, oldVersion, newVersion) {
+        db.execute("""
+create table if not exsit users (
+  $COL_ID INTEGER PRIMARY KEY autoincrement ,
+  name varchar(255) not null,
+  emale text not null ,
+  password varchar(255) not null 
 )
 """);
       },
