@@ -53,10 +53,7 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                 ],
               )
-              // customTitleAndSubtitle(
-              //   title: "بدر",
-              //   subTitle: "0997774541450",
-              // )
+    
             ]),
           ),
         ),

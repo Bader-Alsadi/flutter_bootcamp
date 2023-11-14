@@ -3,6 +3,7 @@ import 'package:app/talka%20app/core/theme/borderRAdius.dart';
 import 'package:app/talka%20app/core/theme/color.dart';
 import 'package:app/talka%20app/core/widgets/custom_contanier.dart';
 import 'package:app/talka%20app/core/widgets/custom_heading.dart';
+import 'package:app/talka%20app/core/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -26,28 +27,9 @@ class CustomContainerWithTextFiled extends StatelessWidget {
               : svg_path,
         ),
         Divider(),
-        Container(
-          height: 60,
-          margin: EdgeInsets.symmetric(vertical: miniSpacer),
-          decoration: BoxDecoration(
-              color: primary,
-              borderRadius: BorderRadius.circular(borderRaduis)),
-          child: TextField(
-            inputFormatters: [
-              isnumber
-                  ? FilteringTextInputFormatter.digitsOnly
-                  : FilteringTextInputFormatter.deny("")
-            ],
-            decoration: InputDecoration(
-                hintText: isnumber ? "" : hintText,
-                hintStyle: TextStyle(color: Colors.grey),
-                border: InputBorder.none,
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: secondary),
-                    borderRadius: BorderRadius.circular(borderRaduis))),
-          ),
-        )
+        CustmoTextFiled(isnumber: isnumber, hintText: hintText)
       ]),
     );
   }
 }
+
