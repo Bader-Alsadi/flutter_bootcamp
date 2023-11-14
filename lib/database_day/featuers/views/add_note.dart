@@ -27,6 +27,16 @@ class _AddNoteState extends State<AddNote> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          SizedBox(
+            width: 20,
+          ),
+          InkWell(
+              onTap: () {
+                noteViewModel.addll();
+              },
+              child: Icon(Icons.add))
+        ],
         title: Text("add new note"),
       ),
       floatingActionButton: FloatingActionButton(

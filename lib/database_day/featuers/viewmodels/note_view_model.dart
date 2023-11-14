@@ -24,4 +24,7 @@ class NoteViewModel {
    Future<int> deleteData (int id)async{
     return dBmanager.deleteData(DBmanager.TBL_NAME, "$id");
   }
+  addll () async{
+    await dBmanager.addAllDate();
+  }
 }

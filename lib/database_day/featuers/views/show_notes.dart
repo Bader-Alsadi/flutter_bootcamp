@@ -45,23 +45,25 @@ class _ShowNotesState extends State<ShowNotes> {
             future: noteViewModel.fetchDate(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return StaggeredGrid.count(
-                  crossAxisCount: 2,
-                  children: List.generate(
-                      snapshot.data!.length,
-                      (index) => Column(
-                            children: [
-                              InkWell
-                              
-                              (
-                                onTap: () {
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                                    return AddNote();
-                                  }));
-                                },
-                                child: cardDesign(context, index, snapshot)),
-                            ],
-                          )),
+                return SingleChildScrollView(
+                  child: StaggeredGrid.count(
+                    crossAxisCount: 2,
+                    children: List.generate(
+                        snapshot.data!.getRange(0, 10).length,
+                        (index) => Column(
+                              children: [
+                                InkWell(
+                                    onTap: () {
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return AddNote();
+                                      }));
+                                    },
+                                    child:
+                                        cardDesign(context, index, snapshot)),
+                              ],
+                            )),
+                  ),
                 );
               } else {
                 return Center(

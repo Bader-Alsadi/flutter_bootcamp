@@ -92,4 +92,16 @@ create table if not exsit users (
     Database localDb = await getObject;
     return localDb.delete(tbl_name, where: "id=$id");
   }
+
+  addAllDate ()async{
+    Database localDb = await getObject;
+    Batch b = localDb.batch();
+    for(int i=0;i<2000;i++){
+      localDb.insert(TBL_NAME, {
+        COL_TITLE:"title $i",
+        COL_DESCRPTION:"descrption $i",
+        COL_DATE:DateTime.now().toString(),
+      });
+    }
+  }
 }

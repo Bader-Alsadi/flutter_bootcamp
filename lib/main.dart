@@ -13,6 +13,7 @@
 // import 'package:flutter/material.dart';
 
 
+import 'package:app/T_moghter_database/featuers/views/online_product_view.dart';
 import 'package:app/day48/featuer/pages/department/department_page.dart';
 import 'package:app/day49/featuer/views/catogry_page.dart';
 import 'package:app/day52/featuer/views/blog_page.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
-        child: BlogPage(),
+        child: OnlineProdut(),
       ),
       // theme: light,
       // darkTheme: dark,

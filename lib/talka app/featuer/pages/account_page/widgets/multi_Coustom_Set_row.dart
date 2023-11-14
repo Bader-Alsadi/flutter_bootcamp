@@ -15,7 +15,7 @@ class multiCustomSettingRwo extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, data[index]["navigoter"]);
+                        Navigator.pushNamed(context, data[index]["navigoter "]);
                       },
                       child: CustomSettingRow(
                         title: data[index]["title"],
