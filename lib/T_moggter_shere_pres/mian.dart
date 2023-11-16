@@ -2,16 +2,15 @@
 // import 'package:flutter/material.dart';
 
 // void main(List<String> args) {
-//   runApp(MyApp());
+//   runApp(Myapp());
 // }
 
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
+// class Myapp extends StatelessWidget {
+//   const Myapp({super.key});
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return const MaterialApp(
+//     return MaterialApp(
 //       home: Splash_screen(),
 //     );
 //   }
