@@ -13,7 +13,7 @@ import 'package:sqflite/sqflite.dart' as sqflite;
 
 part 'app_databas.g.dart';
 
-@Database(version: 1, entities: [Student, Department, Course, RegCourse])
+@Database(version: 2, entities: [Student, Department, Course, RegCourse])
 abstract class AppDatabase extends FloorDatabase {
   StudentDao get studentDao;
   DepartmentDao get departmentDao;

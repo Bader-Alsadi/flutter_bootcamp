@@ -23,6 +23,8 @@ ThemeData themeData = ThemeData(
       elevation: 0,
       titleTextStyle: title,
     ),
+
+    
     scaffoldBackgroundColor: white,
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(backgroundColor: secondry)));

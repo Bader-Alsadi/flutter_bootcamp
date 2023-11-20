@@ -5,6 +5,10 @@ import 'package:floor/floor.dart';
 abstract class CourseDao {
   @Query("select * from Course")
   Future<List<Course>> getAllCourse();
+  @Query("select * from Course where id in (select CourseId from RegCourse where StudentId= :StudentId)")
+  Future<List<Course>> getAllCoursebyStudentid(int StudentId);
+   @Query("select * from Course where depratmentId=:depratmentId and Course.id not in (select CourseId from RegCourse where StudentId= :StudentId) ")
+  Future<List<Course>> getAllCoursebyDebID(int depratmentId,int StudentId);
   @Query("select * from Course where id= :id")
   Future<Course?> getOneStrudent(int id);
   @insert

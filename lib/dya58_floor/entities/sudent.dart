@@ -10,7 +10,6 @@ import 'package:floor/floor.dart';
 ], indices: [
   Index(value: ["phone_no", "email"], unique: true),
 ])
-
 class Student {
   @primaryKey
   final int? id;
@@ -25,6 +24,8 @@ class Student {
 
   @ignore
   final bool isSelected;
+  @ignore
+  final String? department_name;
 
   Student(
       {this.id,
@@ -33,5 +34,6 @@ class Student {
       this.active,
       this.email,
       this.depratmentId,
-      this.isSelected = false});
+      this.isSelected = false,
+      this.department_name});
 }

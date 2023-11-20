@@ -75,7 +75,7 @@ class _$AppDatabase extends AppDatabase {
     Callback? callback,
   ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
-      version: 1,
+      version: 2,
       onConfigure: (database) async {
         await database.execute('PRAGMA foreign_keys = ON');
         await callback?.onConfigure?.call(database);
@@ -95,7 +95,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Department` (`id` INTEGER, `Deparment_name` TEXT, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Course` (`id` INTEGER, `name` TEXT, `hours` INTEGER, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Course` (`id` INTEGER, `name` TEXT, `hours` INTEGER, `depratmentId` INTEGER, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `RegCourse` (`StudentId` INTEGER, `CourseId` INTEGER, FOREIGN KEY (`StudentId`) REFERENCES `StidentX` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`CourseId`) REFERENCES `Course` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`StudentId`, `CourseId`))');
         await database.execute(
@@ -194,16 +194,32 @@ class _$StudentDao extends StudentDao {
   }
 
   @override
-  Future<Student?> getOneStrudent(int id) async {
-    return _queryAdapter.query('select * from StidentX where id= ?1',
+  Future<List<Student>> getAllStudentbyDebId() async {
+    return _queryAdapter.queryList(
+        'select * from StidentX join Department on StidentX.depratmentId=Department.id',
         mapper: (Map<String, Object?> row) => Student(
             id: row['id'] as int?,
             name: row['full_name'] as String?,
             phoneNo: row['phone_no'] as String?,
             active: row['active'] == null ? null : (row['active'] as int) != 0,
             email: row['email'] as String?,
-            depratmentId: row['depratmentId'] as int?),
+            depratmentId: row['depratmentId'] as int?));
+  }
+
+  @override
+  Future<Student?> getOneStrudent(int id) async {
+    return _queryAdapter.query(
+        'select * from StidentX join Department on StidentX.depratmentId=Department.id where StidentX.id= ?1',
+        mapper: (Map<String, Object?> row) => Student(id: row['id'] as int?, name: row['full_name'] as String?, phoneNo: row['phone_no'] as String?, active: row['active'] == null ? null : (row['active'] as int) != 0, email: row['email'] as String?, depratmentId: row['depratmentId'] as int?),
         arguments: [id]);
+  }
+
+  @override
+  Future<List<Student>> getAllCoursebyStudentid(int CourseId) async {
+    return _queryAdapter.queryList(
+        'select * from StidentX where id in (select StudentId from RegCourse where CourseId= ?1)',
+        mapper: (Map<String, Object?> row) => Student(id: row['id'] as int?, name: row['full_name'] as String?, phoneNo: row['phone_no'] as String?, active: row['active'] == null ? null : (row['active'] as int) != 0, email: row['email'] as String?, depratmentId: row['depratmentId'] as int?),
+        arguments: [CourseId]);
   }
 
   @override
@@ -386,7 +402,8 @@ class _$CourseDao extends CourseDao {
             (Course item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'hours': item.hours
+                  'hours': item.hours,
+                  'depratmentId': item.depratmentId
                 }),
         _courseUpdateAdapter = UpdateAdapter(
             database,
@@ -395,7 +412,8 @@ class _$CourseDao extends CourseDao {
             (Course item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'hours': item.hours
+                  'hours': item.hours,
+                  'depratmentId': item.depratmentId
                 }),
         _courseDeletionAdapter = DeletionAdapter(
             database,
@@ -404,7 +422,8 @@ class _$CourseDao extends CourseDao {
             (Course item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'hours': item.hours
+                  'hours': item.hours,
+                  'depratmentId': item.depratmentId
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -425,7 +444,27 @@ class _$CourseDao extends CourseDao {
         mapper: (Map<String, Object?> row) => Course(
             id: row['id'] as int?,
             name: row['name'] as String?,
-            hours: row['hours'] as int?));
+            hours: row['hours'] as int?,
+            depratmentId: row['depratmentId'] as int?));
+  }
+
+  @override
+  Future<List<Course>> getAllCoursebyStudentid(int StudentId) async {
+    return _queryAdapter.queryList(
+        'select * from Course where id in (select CourseId from RegCourse where StudentId= ?1)',
+        mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, hours: row['hours'] as int?, depratmentId: row['depratmentId'] as int?),
+        arguments: [StudentId]);
+  }
+
+  @override
+  Future<List<Course>> getAllCoursebyDebID(
+    int depratmentId,
+    int StudentId,
+  ) async {
+    return _queryAdapter.queryList(
+        'select * from Course where depratmentId=?1 and Course.id not in (select CourseId from RegCourse where StudentId= ?2)',
+        mapper: (Map<String, Object?> row) => Course(id: row['id'] as int?, name: row['name'] as String?, hours: row['hours'] as int?, depratmentId: row['depratmentId'] as int?),
+        arguments: [depratmentId, StudentId]);
   }
 
   @override
@@ -434,7 +473,8 @@ class _$CourseDao extends CourseDao {
         mapper: (Map<String, Object?> row) => Course(
             id: row['id'] as int?,
             name: row['name'] as String?,
-            hours: row['hours'] as int?),
+            hours: row['hours'] as int?,
+            depratmentId: row['depratmentId'] as int?),
         arguments: [id]);
   }
 
@@ -457,7 +497,8 @@ class _$CourseDao extends CourseDao {
         mapper: (Map<String, Object?> row) => Course(
             id: row['id'] as int?,
             name: row['name'] as String?,
-            hours: row['hours'] as int?),
+            hours: row['hours'] as int?,
+            depratmentId: row['depratmentId'] as int?),
         arguments: [word]);
   }
 
