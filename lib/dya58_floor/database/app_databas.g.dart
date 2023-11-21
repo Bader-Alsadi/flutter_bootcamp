@@ -56,6 +56,7 @@ class _$AppDatabaseBuilder {
   }
 }
 
+
 class _$AppDatabase extends AppDatabase {
   _$AppDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
@@ -200,6 +201,7 @@ class _$StudentDao extends StudentDao {
         mapper: (Map<String, Object?> row) => Student(
             id: row['id'] as int?,
             name: row['full_name'] as String?,
+            department_name: row['Deparment_name'] as String?,
             phoneNo: row['phone_no'] as String?,
             active: row['active'] == null ? null : (row['active'] as int) != 0,
             email: row['email'] as String?,

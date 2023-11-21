@@ -22,8 +22,9 @@ class _DepartmentShowState extends State<DepartmentShow> {
         padding: EdgeInsets.all(15),
         width: MediaQuery.sizeOf(context).width,
         child: ElevatedButton(
-            onPressed: () async{
-             await Navigator.push(context, MaterialPageRoute(builder: (context) {
+            onPressed: () async {
+              await Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
                 return AddDepartmenttView();
               }));
               setState(() {});

@@ -47,25 +47,87 @@ class _StudentShowState extends State<StudentShow> {
                             width: MediaQuery.sizeOf(context).width,
                             height: 70,
                             // padding: const EdgeInsets.all(15.0),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                radius: 25,
-                                backgroundColor: secondry,
-                                child: SvgPicture.asset(
-                                  "assets/svg_image/student_reg/student.svg",
-                                  height: 30,
-                                  colorFilter:
-                                      ColorFilter.mode(white, BlendMode.srcIn),
+                            child: Builder(builder: (context) {
+                              return InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 2),
+                                                blurRadius: 40,
+                                                color: black.withOpacity(0.2),
+                                                // spreadRadius: 3,
+                                              ),
+                                            ],
+                                            color: white,
+                                            borderRadius:
+                                                BorderRadius.circular(radio),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SvgPicture.asset(
+                                                "assets/svg_image/student_reg/student.svg",
+                                                height: 70,
+                                                colorFilter: ColorFilter.mode(
+                                                    secondry, BlendMode.srcIn),
+                                              ),
+                                              Text(
+                                                snapshot.data![Index].name!,
+                                                style: subTitle,
+                                              ),
+                                              Divider(
+                                                endIndent: 20,
+                                                thickness: 1,
+                                                indent: 20,
+                                                color:
+                                                    secondry.withOpacity(0.3),
+                                              ),
+                                              RichText(
+                                                  text: TextSpan(children: [
+                                                TextSpan(
+                                                    text:
+                                                        "${snapshot.data![Index].department_name} :",
+                                                    style: subTitle),
+                                                TextSpan(
+                                                    text: snapshot.data![Index]
+                                                            .active!
+                                                        ? " active"
+                                                        : " notactive",
+                                                    style: subTitle.copyWith(
+                                                        color: secondry))
+                                              ]))
+                                            ],
+                                          ),
+                                        );
+                                      });
+                                },
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    radius: 25,
+                                    backgroundColor: secondry,
+                                    child: SvgPicture.asset(
+                                      "assets/svg_image/student_reg/student.svg",
+                                      height: 30,
+                                      colorFilter: ColorFilter.mode(
+                                          white, BlendMode.srcIn),
+                                    ),
+                                  ),
+                                  title: Text(
+                                    snapshot.data![Index].name!,
+                                    style: subTitle,
+                                  ),
+                                  subtitle: Text(
+                                    snapshot.data![Index].department_name!,
+                                  ),
                                 ),
-                              ),
-                              title: Text(
-                                snapshot.data![Index].name!,
-                                style: subTitle,
-                              ),
-                              subtitle: Text(
-                                snapshot.data![Index].department_name!,
-                              ),
-                            )),
+                              );
+                            })),
                         // Specify a key if the
                         //cSlidable is dismissible.
                         key: const ValueKey(0),
