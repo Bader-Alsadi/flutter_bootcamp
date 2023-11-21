@@ -1,5 +1,4 @@
 import 'package:app/dya58_floor/entities/course.dart';
-import 'package:app/dya58_floor/entities/department.dart';
 import 'package:app/dya58_floor/helper/db_hleper.dart';
 import 'package:app/dya58_floor/theme/them_app.dart';
 import 'package:app/dya58_floor/views/widgets/drop_down_list.dart';
@@ -50,14 +49,11 @@ class _AddCourseViewState extends State<AddCourseView> {
                   print("bader $s");
                 } else {
                   var s = await DBhelper.databse.courseDao
-                      .updateCourse(widget.course!
-                          // Student(
-                          //     id: widget.student!.id,
-                          //     name: nameCon.text,
-                          //     email: emailCon.text,
-                          //     phoneNo: phoneCon.text,
-                          //     active: studentState,
-                          //     depratmentId: department_value)
+                      .updateCourse(
+                          Course(
+                              id: widget.course!.id,
+                              name: nameCon.text,
+                              depratmentId: department_value)
                           );
                   print("update $s");
                 }

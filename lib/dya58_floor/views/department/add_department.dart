@@ -45,14 +45,11 @@ class _AddDepmentViewState extends State<AddDepartmenttView> {
                   print("bader $s");
                 } else {
                   var s = await DBhelper.databse.departmentDao
-                      .updateDepartment(widget.department!
-                          // Student(
-                          //     id: widget.student!.id,
-                          //     name: nameCon.text,
-                          //     email: emailCon.text,
-                          //     phoneNo: phoneCon.text,
-                          //     active: studentState,
-                          //     depratmentId: department_value)
+                      .updateDepartment(
+                        Department(
+                             id: widget.department!.id,
+                              name: nameCon.text,
+                        )
                           );
                   print("update $s");
                 }

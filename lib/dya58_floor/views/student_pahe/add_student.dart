@@ -58,14 +58,14 @@ class _AddStudentViewState extends State<AddStudentView> {
                   print("bader $s");
                 } else {
                   var s = await DBhelper.databse.studentDao
-                      .updateStudent(widget.student!
-                          // Student(
-                          //     id: widget.student!.id,
-                          //     name: nameCon.text,
-                          //     email: emailCon.text,
-                          //     phoneNo: phoneCon.text,
-                          //     active: studentState,
-                          //     depratmentId: department_value)
+                      .updateStudent(
+                          Student(
+                              id: widget.student!.id,
+                              name: nameCon.text,
+                              email: emailCon.text,
+                              phoneNo: phoneCon.text,
+                              active: studentState,
+                              depratmentId: department_value)
                           );
                   print("update $s");
                 }
