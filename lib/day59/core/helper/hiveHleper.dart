@@ -1,3 +1,4 @@
+import 'package:floor/floor.dart';
 import 'package:hive/hive.dart';
 
 class HiveHelper{
@@ -12,7 +13,11 @@ HiveHelper(String boxName){
    box.add(hiveObject);
   }
 
-  feach(){
-    return box.values;
+  List feach(){
+    return box.values.toList();
+  
+    
   }
+
+
 }

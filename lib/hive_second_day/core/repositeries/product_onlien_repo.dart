@@ -17,7 +17,8 @@ class ProductOnlineRepo extends ProductREP{
   }
 
   List<Product> dataToproduct(data){
-    return (data as List).map((e) => Product.fromJson(e)).toList();
+    Iterable<dynamic> d = data;
+    return d.map<Product>((e) => e).toList();
   }
 
 }
