@@ -54,6 +54,8 @@ class _StudentShowState extends State<StudentShow> {
                                       context: context,
                                       builder: (context) {
                                         return Container(
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 200),
                                           decoration: BoxDecoration(
                                             boxShadow: [
                                               BoxShadow(
@@ -101,7 +103,11 @@ class _StudentShowState extends State<StudentShow> {
                                                         : " notactive",
                                                     style: subTitle.copyWith(
                                                         color: secondry))
-                                              ]))
+                                              ])),
+                                              Text(
+                                                  "Emale : ${snapshot.data![Index].email!}"),
+                                              Text(
+                                                  "phoneNo : ${snapshot.data![Index].phoneNo!}")
                                             ],
                                           ),
                                         );
