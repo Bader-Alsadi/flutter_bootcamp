@@ -1,10 +1,8 @@
-import 'package:app/dya58_floor/entities/sudent.dart';
 import 'package:app/dya58_floor/helper/db_hleper.dart';
 import 'package:app/dya58_floor/theme/text_style.dart';
 import 'package:app/dya58_floor/theme/them_app.dart';
 import 'package:app/dya58_floor/views/student_pahe/add_course_to_student.dart';
 import 'package:app/dya58_floor/views/student_pahe/add_student.dart';
-import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -80,7 +78,7 @@ class _StudentShowState extends State<StudentShow> {
                                                     secondry, BlendMode.srcIn),
                                               ),
                                               Text(
-                                                snapshot.data![Index].name!,
+                                                "${snapshot.data![Index].name!} : ${snapshot.data![Index].id!}",
                                                 style: subTitle,
                                               ),
                                               Divider(
@@ -151,15 +149,15 @@ class _StudentShowState extends State<StudentShow> {
                             // A SlidableAction can have an icon and/or a label.
                             SlidableAction(
                               onPressed: (context) async {
-                                await DBhelper.databse.studentDao
-                                    .deleteStudentById(
-                                        snapshot.data![Index].id!);
+                                int? s = await DBhelper.databse.studentDao
+                                    .deleteStudent(snapshot.data![Index]);
+                                print("delete $s");
                                 setState(() {});
                               },
                               backgroundColor: Color(0xFFFE4A49),
                               foregroundColor: white,
                               icon: Icons.delete,
-                              label: 'more',
+                              label: 'delete',
                             ),
                             SlidableAction(
                               onPressed: (context) {
@@ -182,14 +180,15 @@ class _StudentShowState extends State<StudentShow> {
                           motion: ScrollMotion(),
                           children: [
                             SlidableAction(
-                              onPressed: (context) {
-                                Navigator.push(context,
+                              onPressed: (context) async {
+                                await Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return AddCourseToStudentView(
                                       id: snapshot.data![Index].id!,
                                       departmentId:
                                           snapshot.data![Index].depratmentId!);
                                 }));
+                                setState(() {});
                               },
                               backgroundColor: Color(0xFF7BC043),
                               foregroundColor: Colors.white,

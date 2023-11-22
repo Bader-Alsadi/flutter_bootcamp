@@ -12,20 +12,20 @@ import 'package:floor/floor.dart';
 ])
 class Student {
   @primaryKey
-  final int? id;
+   int? id;
   @ColumnInfo(name: "full_name")
-  final String? name;
+   String? name;
   @ColumnInfo(name: "phone_no")
-  final String? phoneNo;
-  final String? email;
-  final bool? active;
+   String? phoneNo;
+   String? email;
+   bool? active;
 
-  final int? depratmentId;
+   int? depratmentId;
 
   @ignore
-  final bool isSelected;
+   bool isSelected;
   @ignore
-  final String? department_name;
+   String? department_name;
 
   Student(
       {this.id,

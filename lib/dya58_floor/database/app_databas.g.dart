@@ -56,7 +56,6 @@ class _$AppDatabaseBuilder {
   }
 }
 
-
 class _$AppDatabase extends AppDatabase {
   _$AppDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
@@ -69,6 +68,8 @@ class _$AppDatabase extends AppDatabase {
   CourseDao? _courseDaoInstance;
 
   RegCourseDao? _regCourseDaoInstance;
+
+  Aggragtion? _aggragtionInstance;
 
   Future<sqflite.Database> open(
     String path,
@@ -98,7 +99,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Course` (`id` INTEGER, `name` TEXT, `hours` INTEGER, `depratmentId` INTEGER, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `RegCourse` (`StudentId` INTEGER, `CourseId` INTEGER, FOREIGN KEY (`StudentId`) REFERENCES `StidentX` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`CourseId`) REFERENCES `Course` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`StudentId`, `CourseId`))');
+            'CREATE TABLE IF NOT EXISTS `RegCourse` (`StudentId` INTEGER, `CourseId` INTEGER, FOREIGN KEY (`StudentId`) REFERENCES `StidentX` (`id`) ON UPDATE CASCADE ON DELETE CASCADE, FOREIGN KEY (`CourseId`) REFERENCES `Course` (`id`) ON UPDATE CASCADE ON DELETE CASCADE, PRIMARY KEY (`StudentId`, `CourseId`))');
         await database.execute(
             'CREATE UNIQUE INDEX `index_StidentX_phone_no_email` ON `StidentX` (`phone_no`, `email`)');
 
@@ -126,6 +127,11 @@ class _$AppDatabase extends AppDatabase {
   @override
   RegCourseDao get regCourseDao {
     return _regCourseDaoInstance ??= _$RegCourseDao(database, changeListener);
+  }
+
+  @override
+  Aggragtion get aggragtion {
+    return _aggragtionInstance ??= _$Aggragtion(database, changeListener);
   }
 }
 
@@ -651,5 +657,42 @@ class _$RegCourseDao extends RegCourseDao {
   @override
   Future<int> deleteRegCourseList(List<RegCourse> s) {
     return _regCourseDeletionAdapter.deleteListAndReturnChangedRows(s);
+  }
+}
+
+class _$Aggragtion extends Aggragtion {
+  _$Aggragtion(
+    this.database,
+    this.changeListener,
+  ) : _queryAdapter = QueryAdapter(database);
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  @override
+  Future<int?> countCourse() async {
+    return _queryAdapter.query('select count(*) from Course',
+        mapper: (Map<String, Object?> row) => row.values.first as int);
+  }
+
+  @override
+  Future<int?> countDepartment() async {
+    return _queryAdapter.query('select count(*) from Department',
+        mapper: (Map<String, Object?> row) => row.values.first as int);
+  }
+
+  @override
+  Future<int?> countRegCourse() async {
+    return _queryAdapter.query('select count(*) from RegCourse',
+        mapper: (Map<String, Object?> row) => row.values.first as int);
+  }
+
+  @override
+  Future<int?> countStident() async {
+    return _queryAdapter.query('select count(*) from StidentX',
+        mapper: (Map<String, Object?> row) => row.values.first as int);
   }
 }

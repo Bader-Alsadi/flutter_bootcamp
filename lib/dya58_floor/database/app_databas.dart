@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app/dya58_floor/DAOs/agrgation.dart';
 import 'package:app/dya58_floor/DAOs/course_dao.dart';
 import 'package:app/dya58_floor/DAOs/department_dao.dart';
 import 'package:app/dya58_floor/DAOs/reg_course.dart';
@@ -19,4 +20,5 @@ abstract class AppDatabase extends FloorDatabase {
   DepartmentDao get departmentDao;
   CourseDao get courseDao;
   RegCourseDao get regCourseDao;
+  Aggragtion get aggragtion;
 }

@@ -1,3 +1,4 @@
+import 'package:app/dya58_floor/helper/db_hleper.dart';
 import 'package:app/dya58_floor/theme/text_style.dart';
 import 'package:app/dya58_floor/theme/them_app.dart';
 import 'package:app/dya58_floor/views/course/show_course.dart';
@@ -5,6 +6,7 @@ import 'package:app/dya58_floor/views/data/dashborad_data.dart';
 import 'package:app/dya58_floor/views/department/show_dapartment.dart';
 import 'package:app/dya58_floor/views/student_pahe/student_show.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
+import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -106,20 +108,10 @@ class _DashboardPageState extends State<DashboardPage> {
                             lable: e["title"],
                             count: e["count"],
                             svg_path: e["svg_path"],
+                            index: dashBorad_data.indexOf(e),
                           ),
                         )
-                        .toList()
-                    // NewWidget(
-                    //   count: 2,
-                    // ),
-                    // NewWidget(
-                    //   count: 1,
-                    // ),
-                    // NewWidget(
-                    //   count: 1,
-                    // ),
-
-                    ),
+                        .toList()),
               ),
             ],
           )
@@ -129,24 +121,33 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 }
 
-class NewWidget extends StatelessWidget {
+class NewWidget extends StatefulWidget {
   NewWidget({
     required this.count,
     required this.lable,
     required this.svg_path,
     required this.navigotor,
+    required this.index,
     super.key,
   });
   int count;
   String svg_path, lable, navigotor;
+  int index;
+
+  @override
+  State<NewWidget> createState() => _NewWidgetState();
+}
+
+class _NewWidgetState extends State<NewWidget> {
   @override
   Widget build(BuildContext context) {
     return StaggeredGridTile.count(
-      crossAxisCellCount: count,
+      crossAxisCellCount: widget.count,
       mainAxisCellCount: 1,
       child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, navigotor);
+        onTap: () async {
+          await Navigator.pushNamed(context, widget.navigotor);
+          setState(() {});
         },
         child: Container(
           decoration: BoxDecoration(
@@ -165,12 +166,12 @@ class NewWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
-                svg_path,
+                widget.svg_path,
                 height: 70,
                 colorFilter: ColorFilter.mode(secondry, BlendMode.srcIn),
               ),
               Text(
-                lable,
+                widget.lable,
                 style: subTitle,
               ),
               Divider(
@@ -179,11 +180,20 @@ class NewWidget extends StatelessWidget {
                 indent: 20,
                 color: secondry.withOpacity(0.3),
               ),
-              RichText(
-                  text: TextSpan(children: [
-                TextSpan(text: "Number:", style: subTitle),
-                TextSpan(text: "10", style: subTitle.copyWith(color: secondry))
-              ]))
+              FutureBuilder(
+                  future: widget.index == 0
+                      ? DBhelper.databse.aggragtion.countStident()
+                      : widget.index == 1
+                          ? DBhelper.databse.aggragtion.countDepartment()
+                          : DBhelper.databse.aggragtion.countCourse(),
+                  builder: (contect, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text("number : ${snapshot.data}",
+                          style: subTitle.copyWith(color: secondry));
+                    } else {
+                      return Text("number : 0");
+                    }
+                  })
             ],
           ),
         ),
