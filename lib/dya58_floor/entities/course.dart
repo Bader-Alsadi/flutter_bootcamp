@@ -3,10 +3,10 @@ import 'package:floor/floor.dart';
 @entity
 class Course {
   @primaryKey
-  final int? id;
-  final String? name;
-  final int? hours;
-  final int? depratmentId;
+   int? id;
+   String? name;
+   int? hours;
+   int? depratmentId;
   @ignore
   bool? isSelected;
 

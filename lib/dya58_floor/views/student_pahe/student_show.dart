@@ -105,7 +105,40 @@ class _StudentShowState extends State<StudentShow> {
                                               Text(
                                                   "Emale : ${snapshot.data![Index].email!}"),
                                               Text(
-                                                  "phoneNo : ${snapshot.data![Index].phoneNo!}")
+                                                  "phoneNo : ${snapshot.data![Index].phoneNo!}"),
+                                              Card(
+                                                child: FutureBuilder(
+                                                    future: DBhelper
+                                                        .databse.courseDao
+                                                        .getAllCoursebyStudentid(
+                                                            snapshot
+                                                                .data![Index]
+                                                                .id!),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (snapshot.hasData) {
+                                                        return Wrap(
+                                                          spacing: 10,
+                                                          children: snapshot
+                                                              .data!
+                                                              .map((e) => Chip(
+                                                                  backgroundColor:
+                                                                      primary,
+                                                                  label: Text(
+                                                                    e.name!,
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            white),
+                                                                  )))
+                                                              .toList(),
+                                                        );
+                                                      } else {
+                                                        return Center(
+                                                          child: Text("empty"),
+                                                        );
+                                                      }
+                                                    }),
+                                              )
                                             ],
                                           ),
                                         );

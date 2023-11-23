@@ -44,13 +44,8 @@ class _AddDepmentViewState extends State<AddDepartmenttView> {
                   ));
                   print("bader $s");
                 } else {
-                  var s = await DBhelper.databse.departmentDao
-                      .updateDepartment(
-                        Department(
-                             id: widget.department!.id,
-                              name: nameCon.text,
-                        )
-                          );
+                  var s = await DBhelper.databse.departmentDao.updateDepartment(
+                      widget.department!..name = nameCon.text);
                   print("update $s");
                 }
               } else {

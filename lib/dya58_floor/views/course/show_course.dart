@@ -44,24 +44,67 @@ class _CourseShowState extends State<CourseShow> {
                             width: MediaQuery.sizeOf(context).width,
                             height: 70,
                             // padding: const EdgeInsets.all(15.0),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                radius: 25,
-                                backgroundColor: secondry,
-                                child: SvgPicture.asset(
-                                  "assets/svg_image/student_reg/coures.svg",
-                                  height: 30,
-                                  colorFilter:
-                                      ColorFilter.mode(white, BlendMode.srcIn),
+                            child: InkWell(
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => Container(
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 200),
+                                          child: Center(
+                                            child: Card(
+                                              child: FutureBuilder(
+                                                  future: DBhelper
+                                                      .databse.studentDao
+                                                      .getAllCoursebyStudentid(
+                                                          snapshot.data![Index]
+                                                              .id!),
+                                                  builder: (context, snapshot) {
+                                                    if (!snapshot
+                                                        .data!.isEmpty) {
+                                                      return Wrap(
+                                                        spacing: 10,
+                                                        children: snapshot.data!
+                                                            .map((e) => Chip(
+                                                                backgroundColor:
+                                                                    primary,
+                                                                label: Text(
+                                                                  e.name!,
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          white),
+                                                                )))
+                                                            .toList(),
+                                                      );
+                                                    } else {
+                                                      return Center(
+                                                        child: Text("empty"),
+                                                      );
+                                                    }
+                                                  }),
+                                            ),
+                                          ),
+                                        ));
+                              },
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  radius: 25,
+                                  backgroundColor: secondry,
+                                  child: SvgPicture.asset(
+                                    "assets/svg_image/student_reg/coures.svg",
+                                    height: 30,
+                                    colorFilter: ColorFilter.mode(
+                                        white, BlendMode.srcIn),
+                                  ),
                                 ),
-                              ),
-                              title: Text(
-                                snapshot.data![Index].name!,
-                                style: subTitle,
-                              ),
-                              subtitle: Text(
-                                snapshot.data![Index].hours.toString(),
-                                style: subTitle,
+                                title: Text(
+                                  snapshot.data![Index].name!,
+                                  style: subTitle,
+                                ),
+                                subtitle: Text(
+                                  snapshot.data![Index].hours.toString(),
+                                  style: subTitle,
+                                ),
                               ),
                             )),
                         // Specify a key if the

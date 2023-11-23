@@ -50,11 +50,8 @@ class _AddCourseViewState extends State<AddCourseView> {
                 } else {
                   var s = await DBhelper.databse.courseDao
                       .updateCourse(
-                          Course(
-                              id: widget.course!.id,
-                              name: nameCon.text,
-                              depratmentId: department_value)
-                          );
+                          widget.course!..name=nameCon.text..hours=int.tryParse(HoureCon.text)..depratmentId=department_value)
+                           ;
                   print("update $s");
                 }
               } else {
