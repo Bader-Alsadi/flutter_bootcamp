@@ -1,7 +1,7 @@
+import 'package:app/services_provider/core/them/colors.dart';
 import 'package:app/services_provider/core/them/padding.dart';
 import 'package:app/services_provider/core/widgets/custom_hediang.dart';
 import 'package:app/services_provider/core/widgets/custom_slider_SP.dart';
-import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -50,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
                   (index) => Container(
                         padding: EdgeInsets.all(HE_paddding * 2),
                         decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.2),
+                          color: secondry,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(

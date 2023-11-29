@@ -1,12 +1,8 @@
 import 'package:app/dya58_floor/helper/db_hleper.dart';
 import 'package:app/dya58_floor/theme/text_style.dart';
 import 'package:app/dya58_floor/theme/them_app.dart';
-import 'package:app/dya58_floor/views/course/show_course.dart';
 import 'package:app/dya58_floor/views/data/dashborad_data.dart';
-import 'package:app/dya58_floor/views/department/show_dapartment.dart';
-import 'package:app/dya58_floor/views/student_pahe/student_show.dart';
 import 'package:app/movie_app/core/theme/padding.dart';
-import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
