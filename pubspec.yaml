@@ -56,7 +56,6 @@ dependencies:
   hive: ^2.2.3
   hive_flutter:
 
-
 dev_dependencies:
   floor_generator:
   hive_generator:
@@ -106,9 +105,9 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-Arabic-Regular.ttf
-        - asset: assets/fonts/Montserrat-Arabic-Bold-2.ttf
-          weight: 700
+        - asset: assets/fonts/18 Khebrat Musamim Regular.ttf
+        # - asset: assets/fonts/Montserrat-Arabic-Bold-2.ttf
+          # weight: 700
         # - asset: assets/fonts/Montserrat-Arabic-Light-2.ttf
         # - asset: assets/fonts/Montserrat-Arabic-Medium-2.ttf
         # - asset: assets/fonts/Montserrat-Arabic-SemiBold.ttf

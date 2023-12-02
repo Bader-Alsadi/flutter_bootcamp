@@ -1,21 +1,23 @@
 import 'package:app/movie_app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-TextStyle title = GoogleFonts.lato(
+TextStyle title = TextStyle(
   fontWeight: FontWeight.bold,
+  fontFamily: "Montserrat",
   color: black,
-  fontSize: 18,
+  fontSize: 24,
 );
 
-TextStyle hintText = GoogleFonts.lato(
-  fontWeight: FontWeight.w500,
-  color: primary,
-  fontSize: 12,
+TextStyle normalTextbold = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontFamily: "Montserrat",
+  color: black,
+  fontSize: 16,
 );
 
-TextStyle subTitle = GoogleFonts.lato(
+TextStyle normalText = TextStyle(
   fontWeight: FontWeight.w700,
+  fontFamily: "Montserrat",
   color: black,
   fontSize: 14,
 );

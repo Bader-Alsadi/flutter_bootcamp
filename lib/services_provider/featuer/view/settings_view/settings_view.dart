@@ -3,16 +3,17 @@ import 'package:app/services_provider/core/them/padding.dart';
 import 'package:app/services_provider/core/them/text_style.dart';
 import 'package:flutter/material.dart';
 
-class settingsView
+class SettingsView
  extends StatefulWidget {
-  const settingsView
+  const SettingsView
   ({super.key});
+  static const String ROUTE ="settings";
 
   @override
-  State<settingsView> createState() => _Profile_viewState();
+  State<SettingsView> createState() => _Profile_viewState();
 }
 
-class _Profile_viewState extends State<settingsView> {
+class _Profile_viewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

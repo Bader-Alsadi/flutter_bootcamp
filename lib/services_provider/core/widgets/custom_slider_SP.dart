@@ -1,4 +1,9 @@
+import 'package:app/services_provider/core/them/colors.dart';
 import 'package:app/services_provider/core/them/padding.dart';
+import 'package:app/services_provider/core/them/text_style.dart';
+import 'package:app/services_provider/core/widgets/custom_elevbutton.dart';
+import 'package:app/services_provider/core/widgets/image_crical.dart';
+import 'package:app/services_provider/featuer/view/profile_page/profile_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -17,23 +22,28 @@ class CustomSliderSP extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        "assets/image/index.jpeg",
-                        height: 80,
-                        width: 65,
-                        fit: BoxFit.fill,
-                      ),
+                    leading: ImageCrical(
+                      size: Size(60, 60),
                     ),
-                    title: Text("bader"),
-                    subtitle: Text("programer"),
+                    title: Text(
+                      "بدر السعدي",
+                      style: normalTextbold,
+                    ),
+                    subtitle: Text("مبرمج",
+                        style:
+                            normalText.copyWith(color: black.withOpacity(0.5))),
                   ),
                   SizedBox(
                     width: double.infinity,
                     height: 50,
-                    child: ElevatedButton(
-                        onPressed: () {}, child: Text("View profile")),
+                    child: customButtomElev(
+                        padding: 0,
+                        lable: 'الملف الشخصي',
+                        backColor: COLOR_PRIMARY.withOpacity(0.6),
+                        onPressedFun: () {
+                          Navigator.pushReplacementNamed(
+                              context, ProfilePage.ROUTE);
+                        }),
                   )
                 ],
               ),

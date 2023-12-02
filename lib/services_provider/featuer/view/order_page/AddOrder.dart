@@ -1,23 +1,21 @@
 import 'package:app/movie_app/core/theme/padding.dart';
 import 'package:app/services_provider/core/helper/ui_helper.dart';
 import 'package:app/services_provider/core/them/colors.dart';
-import 'package:app/services_provider/core/them/padding.dart';
 import 'package:app/services_provider/core/them/text_style.dart';
 import 'package:app/services_provider/core/widgets/custom_elevbutton.dart';
 import 'package:app/services_provider/core/widgets/custom_filed.dart';
 import 'package:app/services_provider/core/widgets/custom_heda.dart';
-import 'package:app/services_provider/core/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 
-class PresonalInfomation extends StatefulWidget {
-  const PresonalInfomation({super.key});
-  static const String ROUTE ="presonal_information";
+class AddOrder extends StatefulWidget {
+  const AddOrder({super.key});
+   static const String ROUTE ="add_order";
 
   @override
-  State<PresonalInfomation> createState() => _PresonalInfomationState();
+  State<AddOrder> createState() => _AddOrderState();
 }
 
-class _PresonalInfomationState extends State<PresonalInfomation> {
+class _AddOrderState extends State<AddOrder> {
   final GlobalKey<FormState> FormKey = GlobalKey();
   AutovalidateMode _validate = AutovalidateMode.disabled;
   @override
@@ -25,6 +23,15 @@ class _PresonalInfomationState extends State<PresonalInfomation> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        
+        appBar: AppBar(
+          backgroundColor: COLOR_PRIMARY.withOpacity(.8),
+          title: Text(
+            "تسجيل",
+            style: title.copyWith(color: white),
+          ),
+          centerTitle: true,
+        ),
         body: Container(
           decoration:
               BoxDecoration(gradient: LinearGradient(colors: gradientColors)),
@@ -34,14 +41,17 @@ class _PresonalInfomationState extends State<PresonalInfomation> {
             child: ListView(
               children: [
                 customHeadingSP(
-                  head: 'معلومات شخصية',
+                  head: 'تسجيل كـ مزود خدمة',
                 ),
-                customImage(),
-                Customfiled(lable: "اسم المستخدم", validate: validateName),
-                Customfiled(lable: "رقم الجوال", validate: validateMobile),
-                Customfiled(lable: "الايميل", validate: validateEmail),
-                Customfiled(lable: "الموقع", validate: validateName),
-                Customfiled(lable: "المهنة", validate: validateName),
+                SizedBox(
+                  height: spacer * 1.5,
+                ),
+                Customfiled(lable: "المهنة", validate: validateCareer),
+                Customfiled(
+                  lable: "تفاصيل",
+                  validate: null,
+                  maxLines: 5,
+                ),
                 customButtomElev(
                   lable: 'حفظ',
                   backColor: COLOR_PRIMARY,
