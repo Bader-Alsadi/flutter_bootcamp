@@ -848,8 +848,6 @@ class _$ServiceProviderDao extends ServiceProviderDao {
             id: row['id'] as int?,
             user_id: row['user_id'] as int,
             Category_id: row['Category_id'] as int,
-            category_name: row['category_name'] as String,
-            name: row['user_name'] as String,
             detilas: row['detilas'] as String?));
   }
 

@@ -8,12 +8,16 @@ class Customfiled extends StatelessWidget {
       this.lable,
       this.validate,
       this.maxLines = 1,
+      this.readOnly = false,
       this.filedType,
+      this.ontop,
       this.controller});
   String? lable;
   TextEditingController? controller;
   String? Function(String?)? validate;
   int? maxLines;
+  bool? readOnly;
+  void Function()? ontop;
   TextInputType? filedType;
 
   @override
@@ -21,6 +25,8 @@ class Customfiled extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 32.0, right: 24.0, left: 24.0),
       child: TextFormField(
+          onTap: ontop,
+          readOnly: readOnly!,
           controller: this.controller,
           maxLines: maxLines,
           textAlignVertical: TextAlignVertical.center,

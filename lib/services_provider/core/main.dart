@@ -17,6 +17,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DBhelper.initDatabase();
   await GetStorage.init("user");
+  await GetStorage.init("them");
   runApp(const MyApp());
 }
 
