@@ -5,7 +5,7 @@ import 'package:floor/floor.dart';
 abstract class InquiryDao {
   @Query("select * from Inquiry ")
   Future<List<Inquiry>> getAllInquiry();
-  @Query("select * from Inquiry where id = :id")
+  @Query("select * from Inquiry where Service_provider_id = :id")
   Future<Inquiry?> getInquirybyid(int id);
   @Query("select * from Inquiry where Inquiry_name =:keyword")
   Future<List<Inquiry>> getInquiryByname(String keyword);

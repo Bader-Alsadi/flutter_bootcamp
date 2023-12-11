@@ -1,5 +1,6 @@
 import 'package:app/services_provider/featuer/view/dashbord/dashborad.dart';
 import 'package:app/services_provider/featuer/view/login_page/login_page.dart';
+import 'package:app/services_provider/featuer/view/notfiction_page/notfiction_page.dart';
 import 'package:app/services_provider/featuer/view/order_page/AddOrder.dart';
 import 'package:app/services_provider/featuer/view/order_page/orders_page.dart';
 import 'package:app/services_provider/featuer/view/presonal_Infomation/presonal_formation.dart';
@@ -14,7 +15,6 @@ import '../featuer/view/add_service_provider/add_service_provider.dart';
 
 class RouteManger {
   static Route<dynamic>? generRoute(RouteSettings settings) {
-    var settingsView;
     switch (settings.name) {
       case AddServiceProvider.ROUTE:
         {
@@ -24,6 +24,7 @@ class RouteManger {
         }
       case Dashboard.ROUTE:
         {
+          int id = settings.arguments as int;
           return MaterialPageRoute(builder: (cmc) {
             return Dashboard();
           });
@@ -82,6 +83,12 @@ class RouteManger {
         {
           return MaterialPageRoute(builder: (cmc) {
             return WelcomePage();
+          });
+        }
+      case Notfiction_page.ROUTE:
+        {
+          return MaterialPageRoute(builder: (cmc) {
+            return Notfiction_page();
           });
         }
       // default:

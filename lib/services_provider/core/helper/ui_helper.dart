@@ -13,12 +13,23 @@ String? validateName(String? value) {
 }
 
 String? validateCareer(String? value) {
-  String pattern = r'(^[a-zA-Z ]*$)';
+  String pattern = r'(^[a-zA-Zا-ي]*$)';
   RegExp regExp = RegExp(pattern);
   if (value?.isEmpty ?? true) {
     return "حقل المهنة متطلب";
   } else if (!regExp.hasMatch(value ?? '')) {
     return "المهنة ينبغي ان يكون من ١-ي او من a-z";
+  }
+  return null;
+}
+
+String? validateLocatin(String? value) {
+  String pattern = r'(^[a-zA-Zا-ي]*$)';
+  RegExp regExp = RegExp(pattern);
+  if (value?.isEmpty ?? true) {
+    return "حقل الموقع متطلب";
+  } else if (!regExp.hasMatch(value ?? '')) {
+    return "الموقع ينبغي ان يكون من ١-ي او من a-z";
   }
   return null;
 }
@@ -36,8 +47,6 @@ String? validateMobile(String? value) {
   return null;
 }
 
-
-
 String? validateEmail(String? value) {
   String pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -49,15 +58,7 @@ String? validateEmail(String? value) {
   }
 }
 
-pushReplacement(BuildContext context, Widget destination) {
-  Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (context) => destination));
-}
 
-push(BuildContext context, Widget destination) {
-  Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => destination));
-}
 
 bool isDarkMode(BuildContext context) {
   if (Theme.of(context).brightness == Brightness.light) {

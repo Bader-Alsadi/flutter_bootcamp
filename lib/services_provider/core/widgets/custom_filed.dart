@@ -8,8 +8,10 @@ class Customfiled extends StatelessWidget {
       this.lable,
       this.validate,
       this.maxLines = 1,
-      this.filedType});
+      this.filedType,
+      this.controller});
   String? lable;
+  TextEditingController? controller;
   String? Function(String?)? validate;
   int? maxLines;
   TextInputType? filedType;
@@ -19,6 +21,7 @@ class Customfiled extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 32.0, right: 24.0, left: 24.0),
       child: TextFormField(
+          controller: this.controller,
           maxLines: maxLines,
           textAlignVertical: TextAlignVertical.center,
           textInputAction: TextInputAction.next,

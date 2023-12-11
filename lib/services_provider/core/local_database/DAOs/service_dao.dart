@@ -5,7 +5,7 @@ import 'package:floor/floor.dart';
 abstract class ServiceDao {
   @Query("select * from Service ")
   Future<List<Service>> getAllService();
-  @Query("select * from Service where id = :id")
+  @Query("select * from Service where Service_provider_id = :id")
   Future<Service?> getServicebyid(int id);
   @Query("select * from Service where Service_name =:keyword")
   Future<List<Service>> getServiceByname(String keyword);

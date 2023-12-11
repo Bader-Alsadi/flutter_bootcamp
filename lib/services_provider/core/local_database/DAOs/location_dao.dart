@@ -5,7 +5,7 @@ import 'package:floor/floor.dart';
 abstract class LocationDao {
   @Query("select * from Location ")
   Future<List<Location>> getAllLocation();
-  @Query("select * from Location where id = :id")
+  @Query("select * from Location where user_id = :id")
   Future<Location?> getLocationbyid(int id);
   @Query("select * from Location where Location_name =:keyword")
   Future<List<Location>> getLocationByname(String keyword);

@@ -5,9 +5,9 @@ import 'package:floor/floor.dart';
 abstract class UserDao {
   @Query("select * from User ")
   Future<List<User>> getAllUser();
-  @Query("select * from User where id = :id")
+  @Query("select * from User U join Location L on U.id=L.user_id  where U.id = :id")
   Future<User?> getUserbyid(int id);
-  @Query("select * from User where User_name =:keyword")
+  @Query("select * from User where cell_phone =:keyword")
   Future<List<User>> getUserByname(String keyword);
   @insert
   Future<int> insertUser(User user);

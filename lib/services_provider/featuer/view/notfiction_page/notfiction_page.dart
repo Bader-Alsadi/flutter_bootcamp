@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class Notfiction_page extends StatefulWidget {
   const Notfiction_page({super.key});
+  static const ROUTE = "notfiction_page";
 
   @override
   State<Notfiction_page> createState() => _Notfiction_pageState();
@@ -20,10 +21,12 @@ class _Notfiction_pageState extends State<Notfiction_page> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: COLOR_PRIMARY.withOpacity(.8),
           title: Text(
-            "الاشعارات",
-            style: title,
+            "استفسارات و اشعارات",
+            style: title.copyWith(color: white),
           ),
+          centerTitle: true,
         ),
         body: Container(
           padding: EdgeInsets.only(top: 20),
@@ -56,55 +59,59 @@ class _Notfiction_pageState extends State<Notfiction_page> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "بدر السعدي",
+                              "النظام",
                               style: normalTextbold,
                             ),
                             Text(
-                              "عندي مشكلة في لابتوب اريد منكم حله في اقرب فرصة",
+                              "اهلا بك في تطبيق منفعة",
                               style: normalText.copyWith(
                                   color: black.withOpacity(.5)),
                             ),
                             SizedBox(
                               height: spacer / 2,
                             ),
-                            false
-                                ? Text(
-                                    "رد",
+                            // false
+                            //     ? Text(
+                            //         "رد",
+                            //         style: normalText.copyWith(
+                            //             color: COLOR_PRIMARY),
+                            //       )
+                            //     :
+                            TextFormField(
+                                controller: noti_page,
+                                decoration: getInputDecoration(
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {});
+                                    },
+                                    child: Icon(
+                                      Icons.send_rounded,
+                                      size: 15,
+                                    ),
+                                  ),
+                                  hint: "رد",
+                                  darkMode: isDarkMode(context),
+                                  errorColor:
+                                      Theme.of(context).colorScheme.error,
+                                )),
+                            Visibility(
+                              visible: false,
+                              child: Container(
+                                padding: EdgeInsets.all(HE_paddding),
+                                decoration: BoxDecoration(
+                                    color: COLOR_PRIMARY.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(25)),
+                                child: Text(noti_page.text,
                                     style: normalText.copyWith(
-                                        color: COLOR_PRIMARY),
-                                  )
-                                : TextFormField(
-                                    controller: noti_page,
-                                    decoration: getInputDecoration(
-                                      suffixIcon: InkWell(
-                                        onTap: () {
-                                          setState(() {});
-                                        },
-                                        child: Icon(
-                                          Icons.send_rounded,
-                                          size: 15,
-                                        ),
-                                      ),
-                                      hint: "رد",
-                                      darkMode: isDarkMode(context),
-                                      errorColor:
-                                          Theme.of(context).colorScheme.error,
-                                    )),
-                            Container(
-                              padding: EdgeInsets.all(HE_paddding),
-                              decoration: BoxDecoration(
-                                  color: COLOR_PRIMARY.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(25)),
-                              child: Text(noti_page.text,
-                                  style: normalText.copyWith(
-                                      color: black.withOpacity(.5))),
+                                        color: black.withOpacity(.5))),
+                              ),
                             )
                           ],
                         ),
                       ),
                     ),
                   ),
-              itemCount: 3),
+              itemCount: 1),
         ),
       ),
     );

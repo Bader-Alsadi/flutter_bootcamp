@@ -11,10 +11,12 @@ import 'package:app/services_provider/featuer/view/settings_view/settings_view.d
 import 'package:app/services_provider/featuer/view/validation_page/validtion_page.dart';
 import 'package:app/services_provider/featuer/view/welcom_page/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DBhelper.initDatabase();
+  await GetStorage.init("user");
   runApp(const MyApp());
 }
 
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteManger.generRoute,
       theme: ligth,
       title: 'Material App',
-      home: Dashboard(),
+      home: WelcomePage(),
     );
   }
 }

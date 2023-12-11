@@ -1,6 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:app/services_provider/core/local_database/DAOs/area_dao.dart';
 import 'package:app/services_provider/core/local_database/DAOs/category_dao.dart';
 import 'package:app/services_provider/core/local_database/DAOs/inquiry_dao.dart';
+import 'package:app/services_provider/core/local_database/DAOs/location_dao.dart';
 import 'package:app/services_provider/core/local_database/DAOs/order_dao.dart';
 import 'package:app/services_provider/core/local_database/DAOs/rating_dao.dart';
 import 'package:app/services_provider/core/local_database/DAOs/service_dao.dart';
@@ -27,6 +30,7 @@ part 'app_database.g.dart';
   Inquiry,
   Location,
   // Order,
+
   Rating,
   Service,
   ServiceProvider,
@@ -36,6 +40,7 @@ abstract class AppDatabase extends FloorDatabase {
   AreaDao get areaDao;
   CategoryDao get categoryDao;
   InquiryDao get inquiryDao;
+  LocationDao get locationDao;
   // OrderDao get orderDao;
   RatingDao get ratingDao;
   ServiceDao get serviceDao;

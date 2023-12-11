@@ -8,7 +8,7 @@ class SplachSreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    delay5Secs(context);
+    // delay5Secs(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
@@ -20,9 +20,9 @@ class SplachSreen extends StatelessWidget {
     );
   }
 
-  delay5Secs(BuildContext context) async {
-    await Future.delayed(Duration(seconds: 5));
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Dashboard()));
-  }
+  // delay5Secs(BuildContext context) async {
+  //   await Future.delayed(Duration(seconds: 5));
+  //   Navigator.push(
+  //       context, MaterialPageRoute(builder: (context) => Dashboard()));
+  // }
 }

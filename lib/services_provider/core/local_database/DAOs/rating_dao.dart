@@ -5,7 +5,7 @@ import 'package:floor/floor.dart';
 abstract class RatingDao {
   @Query("select * from Rating ")
   Future<List<Rating>> getAllRating();
-  @Query("select * from Rating where id = :id")
+  @Query("select * from Rating where Service_id = :id")
   Future<Rating?> getRatingbyid(int id);
   @Query("select * from Rating where Rating_name =:keyword")
   Future<List<Rating>> getRatingByname(String keyword);

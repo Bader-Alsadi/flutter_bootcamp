@@ -67,7 +67,7 @@ class _$AppDatabase extends AppDatabase {
 
   InquiryDao? _inquiryDaoInstance;
 
-  OrderDao? _orderDaoInstance;
+  LocationDao? _locationDaoInstance;
 
   RatingDao? _ratingDaoInstance;
 
@@ -101,21 +101,19 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Area` (`id` INTEGER, `area_name` TEXT NOT NULL, `create_at` TEXT, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Category` (`id` INTEGER, `category_name` TEXT NOT NULL, `category_image` TEXT, `create_at` TEXT, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Category` (`id` INTEGER, `category_name` TEXT NOT NULL, `create_at` TEXT, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Inquiry` (`id` INTEGER, `Inquiry_name` TEXT NOT NULL, `replay` TEXT, `user_id` INTEGER NOT NULL, `Service_provider_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, FOREIGN KEY (`Service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Inquiry` (`id` INTEGER, `Inquiry_name` TEXT NOT NULL, `replay` TEXT, `is_read` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `Service_provider_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, FOREIGN KEY (`Service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Location` (`id` INTEGER, `descripction` TEXT NOT NULL, `user_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Order` (`id` INTEGER, `User_id` INTEGER NOT NULL, `Service_id` INTEGER NOT NULL, `Service_provider_id` INTEGER NOT NULL, `state` TEXT, `create_at` TEXT, FOREIGN KEY (`User_id`) REFERENCES `User` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`Service_id`) REFERENCES `Service` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`Service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Rating` (`id` INTEGER, `rate` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `Service_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`Service_id`) REFERENCES `Service` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Rating` (`id` INTEGER, `rate` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, `order_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`order_id`) REFERENCES `Order` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Service` (`id` INTEGER, `Service_name` TEXT NOT NULL, `description` TEXT NOT NULL, `Service_provider_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`Service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Service` (`id` INTEGER, `Service_name` TEXT NOT NULL, `description` TEXT NOT NULL, `category_id` INTEGER NOT NULL, `Service_provider_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, FOREIGN KEY (`Service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `ServiceProvider` (`id` INTEGER, `Category_id` INTEGER NOT NULL, `detilas` TEXT, `create_at` TEXT, `user_id` INTEGER NOT NULL, FOREIGN KEY (`Category_id`) REFERENCES `Category` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON UPDATE CASCADE ON DELETE SET NULL, PRIMARY KEY (`id`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `ServiceProvider` (`id` INTEGER, `career` TEXT NOT NULL, `detilas` TEXT, `create_at` TEXT, PRIMARY KEY (`id`))');
-        await database.execute(
-            'CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER, `user_name` TEXT NOT NULL, `cell_phone` TEXT NOT NULL, `user_image` TEXT, `area_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`area_id`) REFERENCES `Area` (`area`) ON UPDATE NO ACTION ON DELETE SET NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER, `user_name` TEXT NOT NULL, `cell_phone` TEXT NOT NULL, `email` TEXT, `user_image` BLOB, `area_id` INTEGER NOT NULL, `create_at` TEXT, FOREIGN KEY (`area_id`) REFERENCES `Area` (`id`) ON UPDATE NO ACTION ON DELETE SET NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -139,8 +137,8 @@ class _$AppDatabase extends AppDatabase {
   }
 
   @override
-  OrderDao get orderDao {
-    return _orderDaoInstance ??= _$OrderDao(database, changeListener);
+  LocationDao get locationDao {
+    return _locationDaoInstance ??= _$LocationDao(database, changeListener);
   }
 
   @override
@@ -268,7 +266,6 @@ class _$CategoryDao extends CategoryDao {
             (Category item) => <String, Object?>{
                   'id': item.id,
                   'category_name': item.category_name,
-                  'category_image': item.category_image,
                   'create_at': item.create_at
                 }),
         _categoryUpdateAdapter = UpdateAdapter(
@@ -278,7 +275,6 @@ class _$CategoryDao extends CategoryDao {
             (Category item) => <String, Object?>{
                   'id': item.id,
                   'category_name': item.category_name,
-                  'category_image': item.category_image,
                   'create_at': item.create_at
                 }),
         _categoryDeletionAdapter = DeletionAdapter(
@@ -288,7 +284,6 @@ class _$CategoryDao extends CategoryDao {
             (Category item) => <String, Object?>{
                   'id': item.id,
                   'category_name': item.category_name,
-                  'category_image': item.category_image,
                   'create_at': item.create_at
                 });
 
@@ -309,8 +304,7 @@ class _$CategoryDao extends CategoryDao {
     return _queryAdapter.queryList('select * from Category',
         mapper: (Map<String, Object?> row) => Category(
             id: row['id'] as int?,
-            category_name: row['category_name'] as String,
-            category_image: row['category_image'] as String?));
+            category_name: row['category_name'] as String));
   }
 
   @override
@@ -318,8 +312,7 @@ class _$CategoryDao extends CategoryDao {
     return _queryAdapter.query('select * from Category where id = ?1',
         mapper: (Map<String, Object?> row) => Category(
             id: row['id'] as int?,
-            category_name: row['category_name'] as String,
-            category_image: row['category_image'] as String?),
+            category_name: row['category_name'] as String),
         arguments: [id]);
   }
 
@@ -329,8 +322,7 @@ class _$CategoryDao extends CategoryDao {
         'select * from Category where category_name =?1',
         mapper: (Map<String, Object?> row) => Category(
             id: row['id'] as int?,
-            category_name: row['category_name'] as String,
-            category_image: row['category_image'] as String?),
+            category_name: row['category_name'] as String),
         arguments: [keyword]);
   }
 
@@ -371,6 +363,7 @@ class _$InquiryDao extends InquiryDao {
                   'id': item.id,
                   'Inquiry_name': item.Inquiry_name,
                   'replay': item.replay,
+                  'is_read': item.is_read ? 1 : 0,
                   'user_id': item.user_id,
                   'Service_provider_id': item.Service_provider_id,
                   'create_at': item.create_at
@@ -383,6 +376,7 @@ class _$InquiryDao extends InquiryDao {
                   'id': item.id,
                   'Inquiry_name': item.Inquiry_name,
                   'replay': item.replay,
+                  'is_read': item.is_read ? 1 : 0,
                   'user_id': item.user_id,
                   'Service_provider_id': item.Service_provider_id,
                   'create_at': item.create_at
@@ -395,6 +389,7 @@ class _$InquiryDao extends InquiryDao {
                   'id': item.id,
                   'Inquiry_name': item.Inquiry_name,
                   'replay': item.replay,
+                  'is_read': item.is_read ? 1 : 0,
                   'user_id': item.user_id,
                   'Service_provider_id': item.Service_provider_id,
                   'create_at': item.create_at
@@ -419,17 +414,20 @@ class _$InquiryDao extends InquiryDao {
             id: row['id'] as int?,
             replay: row['replay'] as String?,
             Inquiry_name: row['Inquiry_name'] as String,
+            is_read: (row['is_read'] as int) != 0,
             Service_provider_id: row['Service_provider_id'] as int,
             user_id: row['user_id'] as int));
   }
 
   @override
   Future<Inquiry?> getInquirybyid(int id) async {
-    return _queryAdapter.query('select * from Inquiry where id = ?1',
+    return _queryAdapter.query(
+        'select * from Inquiry where Service_provider_id = ?1',
         mapper: (Map<String, Object?> row) => Inquiry(
             id: row['id'] as int?,
             replay: row['replay'] as String?,
             Inquiry_name: row['Inquiry_name'] as String,
+            is_read: (row['is_read'] as int) != 0,
             Service_provider_id: row['Service_provider_id'] as int,
             user_id: row['user_id'] as int),
         arguments: [id]);
@@ -443,6 +441,7 @@ class _$InquiryDao extends InquiryDao {
             id: row['id'] as int?,
             replay: row['replay'] as String?,
             Inquiry_name: row['Inquiry_name'] as String,
+            is_read: (row['is_read'] as int) != 0,
             Service_provider_id: row['Service_provider_id'] as int,
             user_id: row['user_id'] as int),
         arguments: [keyword]);
@@ -473,44 +472,38 @@ class _$InquiryDao extends InquiryDao {
   }
 }
 
-class _$OrderDao extends OrderDao {
-  _$OrderDao(
+class _$LocationDao extends LocationDao {
+  _$LocationDao(
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database),
-        _orderInsertionAdapter = InsertionAdapter(
+        _locationInsertionAdapter = InsertionAdapter(
             database,
-            'Order',
-            (Order item) => <String, Object?>{
+            'Location',
+            (Location item) => <String, Object?>{
                   'id': item.id,
-                  'User_id': item.User_id,
-                  'Service_id': item.Service_id,
-                  'Service_provider_id': item.Service_provider_id,
-                  'state': item.state,
+                  'descripction': item.descripction,
+                  'user_id': item.user_id,
                   'create_at': item.create_at
                 }),
-        _orderUpdateAdapter = UpdateAdapter(
+        _locationUpdateAdapter = UpdateAdapter(
             database,
-            'Order',
+            'Location',
             ['id'],
-            (Order item) => <String, Object?>{
+            (Location item) => <String, Object?>{
                   'id': item.id,
-                  'User_id': item.User_id,
-                  'Service_id': item.Service_id,
-                  'Service_provider_id': item.Service_provider_id,
-                  'state': item.state,
+                  'descripction': item.descripction,
+                  'user_id': item.user_id,
                   'create_at': item.create_at
                 }),
-        _orderDeletionAdapter = DeletionAdapter(
+        _locationDeletionAdapter = DeletionAdapter(
             database,
-            'Order',
+            'Location',
             ['id'],
-            (Order item) => <String, Object?>{
+            (Location item) => <String, Object?>{
                   'id': item.id,
-                  'User_id': item.User_id,
-                  'Service_id': item.Service_id,
-                  'Service_provider_id': item.Service_provider_id,
-                  'state': item.state,
+                  'descripction': item.descripction,
+                  'user_id': item.user_id,
                   'create_at': item.create_at
                 });
 
@@ -520,66 +513,64 @@ class _$OrderDao extends OrderDao {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<Order> _orderInsertionAdapter;
+  final InsertionAdapter<Location> _locationInsertionAdapter;
 
-  final UpdateAdapter<Order> _orderUpdateAdapter;
+  final UpdateAdapter<Location> _locationUpdateAdapter;
 
-  final DeletionAdapter<Order> _orderDeletionAdapter;
+  final DeletionAdapter<Location> _locationDeletionAdapter;
 
   @override
-  Future<List<Order>> getAllOrder() async {
-    return _queryAdapter.queryList('select * from Order',
-        mapper: (Map<String, Object?> row) => Order(
+  Future<List<Location>> getAllLocation() async {
+    return _queryAdapter.queryList('select * from Location',
+        mapper: (Map<String, Object?> row) => Location(
             id: row['id'] as int?,
-            Service_provider_id: row['Service_provider_id'] as int,
-            User_id: row['User_id'] as int,
-            Service_id: row['Service_id'] as int));
+            descripction: row['descripction'] as String,
+            user_id: row['user_id'] as int));
   }
 
   @override
-  Future<Order?> getOrderbyid(int id) async {
-    return _queryAdapter.query('select * from Order where id = ?1',
-        mapper: (Map<String, Object?> row) => Order(
+  Future<Location?> getLocationbyid(int id) async {
+    return _queryAdapter.query('select * from Location where user_id = ?1',
+        mapper: (Map<String, Object?> row) => Location(
             id: row['id'] as int?,
-            Service_provider_id: row['Service_provider_id'] as int,
-            User_id: row['User_id'] as int,
-            Service_id: row['Service_id'] as int),
+            descripction: row['descripction'] as String,
+            user_id: row['user_id'] as int),
         arguments: [id]);
   }
 
   @override
-  Future<List<Order>> getOrderByname(String keyword) async {
-    return _queryAdapter.queryList('select * from Order where Order_name =?1',
-        mapper: (Map<String, Object?> row) => Order(
+  Future<List<Location>> getLocationByname(String keyword) async {
+    return _queryAdapter.queryList(
+        'select * from Location where Location_name =?1',
+        mapper: (Map<String, Object?> row) => Location(
             id: row['id'] as int?,
-            Service_provider_id: row['Service_provider_id'] as int,
-            User_id: row['User_id'] as int,
-            Service_id: row['Service_id'] as int),
+            descripction: row['descripction'] as String,
+            user_id: row['user_id'] as int),
         arguments: [keyword]);
   }
 
   @override
-  Future<int?> deleteOrderByid(int id) async {
-    return _queryAdapter.query('delete from Order where id = ?1',
+  Future<int?> deleteLocationByid(int id) async {
+    return _queryAdapter.query('delete from Location where id = ?1',
         mapper: (Map<String, Object?> row) => row.values.first as int,
         arguments: [id]);
   }
 
   @override
-  Future<int> insertOrder(Order order) {
-    return _orderInsertionAdapter.insertAndReturnId(
-        order, OnConflictStrategy.abort);
+  Future<int> insertLocation(Location location) {
+    return _locationInsertionAdapter.insertAndReturnId(
+        location, OnConflictStrategy.abort);
   }
 
   @override
-  Future<int> updateOrder(Order order) {
-    return _orderUpdateAdapter.updateAndReturnChangedRows(
-        order, OnConflictStrategy.abort);
+  Future<int> updateLocation(Location location) {
+    return _locationUpdateAdapter.updateAndReturnChangedRows(
+        location, OnConflictStrategy.abort);
   }
 
   @override
-  Future<int> deleteOrder(Order order) {
-    return _orderDeletionAdapter.deleteAndReturnChangedRows(order);
+  Future<int> deleteLocation(Location location) {
+    return _locationDeletionAdapter.deleteAndReturnChangedRows(location);
   }
 }
 
@@ -595,7 +586,7 @@ class _$RatingDao extends RatingDao {
                   'id': item.id,
                   'rate': item.rate,
                   'user_id': item.user_id,
-                  'order_id': item.order_id,
+                  'Service_id': item.Service_id,
                   'create_at': item.create_at
                 }),
         _ratingUpdateAdapter = UpdateAdapter(
@@ -606,7 +597,7 @@ class _$RatingDao extends RatingDao {
                   'id': item.id,
                   'rate': item.rate,
                   'user_id': item.user_id,
-                  'order_id': item.order_id,
+                  'Service_id': item.Service_id,
                   'create_at': item.create_at
                 }),
         _ratingDeletionAdapter = DeletionAdapter(
@@ -617,7 +608,7 @@ class _$RatingDao extends RatingDao {
                   'id': item.id,
                   'rate': item.rate,
                   'user_id': item.user_id,
-                  'order_id': item.order_id,
+                  'Service_id': item.Service_id,
                   'create_at': item.create_at
                 });
 
@@ -639,17 +630,17 @@ class _$RatingDao extends RatingDao {
         mapper: (Map<String, Object?> row) => Rating(
             id: row['id'] as int?,
             rate: row['rate'] as int,
-            order_id: row['order_id'] as int,
+            Service_id: row['Service_id'] as int,
             user_id: row['user_id'] as int));
   }
 
   @override
   Future<Rating?> getRatingbyid(int id) async {
-    return _queryAdapter.query('select * from Rating where id = ?1',
+    return _queryAdapter.query('select * from Rating where Service_id = ?1',
         mapper: (Map<String, Object?> row) => Rating(
             id: row['id'] as int?,
             rate: row['rate'] as int,
-            order_id: row['order_id'] as int,
+            Service_id: row['Service_id'] as int,
             user_id: row['user_id'] as int),
         arguments: [id]);
   }
@@ -660,7 +651,7 @@ class _$RatingDao extends RatingDao {
         mapper: (Map<String, Object?> row) => Rating(
             id: row['id'] as int?,
             rate: row['rate'] as int,
-            order_id: row['order_id'] as int,
+            Service_id: row['Service_id'] as int,
             user_id: row['user_id'] as int),
         arguments: [keyword]);
   }
@@ -702,7 +693,6 @@ class _$ServiceDao extends ServiceDao {
                   'id': item.id,
                   'Service_name': item.Service_name,
                   'description': item.description,
-                  'category_id': item.category_id,
                   'Service_provider_id': item.Service_provider_id,
                   'create_at': item.create_at
                 }),
@@ -714,7 +704,6 @@ class _$ServiceDao extends ServiceDao {
                   'id': item.id,
                   'Service_name': item.Service_name,
                   'description': item.description,
-                  'category_id': item.category_id,
                   'Service_provider_id': item.Service_provider_id,
                   'create_at': item.create_at
                 }),
@@ -726,7 +715,6 @@ class _$ServiceDao extends ServiceDao {
                   'id': item.id,
                   'Service_name': item.Service_name,
                   'description': item.description,
-                  'category_id': item.category_id,
                   'Service_provider_id': item.Service_provider_id,
                   'create_at': item.create_at
                 });
@@ -750,18 +738,17 @@ class _$ServiceDao extends ServiceDao {
             id: row['id'] as int?,
             Service_name: row['Service_name'] as String,
             description: row['description'] as String,
-            category_id: row['category_id'] as int,
             Service_provider_id: row['Service_provider_id'] as int));
   }
 
   @override
   Future<Service?> getServicebyid(int id) async {
-    return _queryAdapter.query('select * from Service where id = ?1',
+    return _queryAdapter.query(
+        'select * from Service where Service_provider_id = ?1',
         mapper: (Map<String, Object?> row) => Service(
             id: row['id'] as int?,
             Service_name: row['Service_name'] as String,
             description: row['description'] as String,
-            category_id: row['category_id'] as int,
             Service_provider_id: row['Service_provider_id'] as int),
         arguments: [id]);
   }
@@ -774,7 +761,6 @@ class _$ServiceDao extends ServiceDao {
             id: row['id'] as int?,
             Service_name: row['Service_name'] as String,
             description: row['description'] as String,
-            category_id: row['category_id'] as int,
             Service_provider_id: row['Service_provider_id'] as int),
         arguments: [keyword]);
   }
@@ -814,9 +800,10 @@ class _$ServiceProviderDao extends ServiceProviderDao {
             'ServiceProvider',
             (ServiceProvider item) => <String, Object?>{
                   'id': item.id,
-                  'career': item.career,
+                  'Category_id': item.Category_id,
                   'detilas': item.detilas,
-                  'create_at': item.create_at
+                  'create_at': item.create_at,
+                  'user_id': item.user_id
                 }),
         _serviceProviderUpdateAdapter = UpdateAdapter(
             database,
@@ -824,9 +811,10 @@ class _$ServiceProviderDao extends ServiceProviderDao {
             ['id'],
             (ServiceProvider item) => <String, Object?>{
                   'id': item.id,
-                  'career': item.career,
+                  'Category_id': item.Category_id,
                   'detilas': item.detilas,
-                  'create_at': item.create_at
+                  'create_at': item.create_at,
+                  'user_id': item.user_id
                 }),
         _serviceProviderDeletionAdapter = DeletionAdapter(
             database,
@@ -834,9 +822,10 @@ class _$ServiceProviderDao extends ServiceProviderDao {
             ['id'],
             (ServiceProvider item) => <String, Object?>{
                   'id': item.id,
-                  'career': item.career,
+                  'Category_id': item.Category_id,
                   'detilas': item.detilas,
-                  'create_at': item.create_at
+                  'create_at': item.create_at,
+                  'user_id': item.user_id
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -853,20 +842,30 @@ class _$ServiceProviderDao extends ServiceProviderDao {
 
   @override
   Future<List<ServiceProvider>> getAllServiceProvider() async {
-    return _queryAdapter.queryList('select * from ServiceProvider',
+    return _queryAdapter.queryList(
+        'select * from ServiceProvider SP join User U on SP.user_id = U.id join  Category C on SP.Category_id = C.id',
         mapper: (Map<String, Object?> row) => ServiceProvider(
             id: row['id'] as int?,
-            career: row['career'] as String,
+            user_id: row['user_id'] as int,
+            Category_id: row['Category_id'] as int,
+            category_name: row['category_name'] as String,
+            name: row['user_name'] as String,
             detilas: row['detilas'] as String?));
   }
 
   @override
   Future<ServiceProvider?> getServiceProviderbyid(int id) async {
-    return _queryAdapter.query('select * from ServiceProvider where id = ?1',
-        mapper: (Map<String, Object?> row) => ServiceProvider(
-            id: row['id'] as int?,
-            career: row['career'] as String,
-            detilas: row['detilas'] as String?),
+    return _queryAdapter.query(
+        'select * from ServiceProvider SP join User U  onSP.user_id = U.id join  Category C on SP.Category_id = C.id  where id = ?1',
+        mapper: (Map<String, Object?> row) => ServiceProvider(id: row['id'] as int?, user_id: row['user_id'] as int, Category_id: row['Category_id'] as int, detilas: row['detilas'] as String?),
+        arguments: [id]);
+  }
+
+  @override
+  Future<ServiceProvider?> getServiceProviderbyCateid(int id) async {
+    return _queryAdapter.query(
+        'select * from ServiceProvider SP join User U on SP.user_id = U.id join  Category C on SP.Category_id = C.id  where Category_id = ?1',
+        mapper: (Map<String, Object?> row) => ServiceProvider(id: row['id'] as int?, user_id: row['user_id'] as int, Category_id: row['Category_id'] as int, detilas: row['detilas'] as String?),
         arguments: [id]);
   }
 
@@ -876,7 +875,8 @@ class _$ServiceProviderDao extends ServiceProviderDao {
         'select * from ServiceProvider where ServiceProvider_name =?1',
         mapper: (Map<String, Object?> row) => ServiceProvider(
             id: row['id'] as int?,
-            career: row['career'] as String,
+            user_id: row['user_id'] as int,
+            Category_id: row['Category_id'] as int,
             detilas: row['detilas'] as String?),
         arguments: [keyword]);
   }
@@ -919,6 +919,7 @@ class _$UserDao extends UserDao {
                   'id': item.id,
                   'user_name': item.user_name,
                   'cell_phone': item.cell_phone,
+                  'email': item.email,
                   'user_image': item.user_image,
                   'area_id': item.area_id,
                   'create_at': item.create_at
@@ -931,6 +932,7 @@ class _$UserDao extends UserDao {
                   'id': item.id,
                   'user_name': item.user_name,
                   'cell_phone': item.cell_phone,
+                  'email': item.email,
                   'user_image': item.user_image,
                   'area_id': item.area_id,
                   'create_at': item.create_at
@@ -943,6 +945,7 @@ class _$UserDao extends UserDao {
                   'id': item.id,
                   'user_name': item.user_name,
                   'cell_phone': item.cell_phone,
+                  'email': item.email,
                   'user_image': item.user_image,
                   'area_id': item.area_id,
                   'create_at': item.create_at
@@ -967,30 +970,28 @@ class _$UserDao extends UserDao {
             id: row['id'] as int?,
             user_name: row['user_name'] as String,
             cell_phone: row['cell_phone'] as String,
-            user_image: row['user_image'] as String?,
+            email: row['email'] as String?,
+            user_image: row['user_image'] as Uint8List?,
             area_id: row['area_id'] as int));
   }
 
   @override
   Future<User?> getUserbyid(int id) async {
-    return _queryAdapter.query('select * from User where id = ?1',
-        mapper: (Map<String, Object?> row) => User(
-            id: row['id'] as int?,
-            user_name: row['user_name'] as String,
-            cell_phone: row['cell_phone'] as String,
-            user_image: row['user_image'] as String?,
-            area_id: row['area_id'] as int),
+    return _queryAdapter.query(
+        'select * from User U join Location L on U.id=L.user_id  where U.id = ?1',
+        mapper: (Map<String, Object?> row) => User(id: row['id'] as int?, user_name: row['user_name'] as String, cell_phone: row['cell_phone'] as String, email: row['email'] as String?, user_image: row['user_image'] as Uint8List?, area_id: row['area_id'] as int),
         arguments: [id]);
   }
 
   @override
   Future<List<User>> getUserByname(String keyword) async {
-    return _queryAdapter.queryList('select * from User where User_name =?1',
+    return _queryAdapter.queryList('select * from User where cell_phone =?1',
         mapper: (Map<String, Object?> row) => User(
             id: row['id'] as int?,
             user_name: row['user_name'] as String,
             cell_phone: row['cell_phone'] as String,
-            user_image: row['user_image'] as String?,
+            email: row['email'] as String?,
+            user_image: row['user_image'] as Uint8List?,
             area_id: row['area_id'] as int),
         arguments: [keyword]);
   }

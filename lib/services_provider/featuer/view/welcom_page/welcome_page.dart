@@ -54,7 +54,7 @@ class _WelcomePageState extends State<WelcomePage> {
               lable: 'مستخدم سابق',
               backColor: COLOR_PRIMARY.withOpacity(0.7),
               onPressedFun: () {
-                Navigator.pushReplacementNamed(context, login_page.ROUTE);
+                Navigator.pushNamed(context, login_page.ROUTE);
               },
             ),
 
@@ -62,7 +62,7 @@ class _WelcomePageState extends State<WelcomePage> {
               lable: 'مستخدم جديد',
               backColor: COLOR_SECONDRY.withOpacity(0.7),
               onPressedFun: () {
-                Navigator.pushReplacementNamed(context, Sing_in_page.ROUTE);
+                Navigator.pushNamed(context, Sing_in_page.ROUTE);
               },
             ),
           ],

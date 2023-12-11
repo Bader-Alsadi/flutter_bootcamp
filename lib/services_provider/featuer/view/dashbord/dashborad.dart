@@ -8,11 +8,15 @@ import 'package:app/services_provider/core/widgets/custom_slider_SP.dart';
 import 'package:app/services_provider/core/widgets/image_crical.dart';
 import 'package:app/services_provider/featuer/view/presonal_Infomation/presonal_formation.dart';
 import 'package:app/services_provider/featuer/view/profile_page/profile_page.dart';
+import 'package:app/services_provider/featuer/view/welcom_page/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  Dashboard({
+    super.key,
+  });
+
   static const String ROUTE = "dashboard";
 
   @override
@@ -24,7 +28,7 @@ class _DashboardState extends State<Dashboard> {
     {
       "name": "معلومات شخصية",
       "svg-path": "assets/svg_image/icons/user.svg",
-      "nav": PresonalInfomation.ROUTE
+      "nav": PresonalInfomation.ROUTE,
     },
     {
       "name": "اعدادت",
@@ -34,7 +38,7 @@ class _DashboardState extends State<Dashboard> {
     {
       "name": "تسجيل الخروج",
       "svg-path": "assets/svg_image/icons/logout.svg",
-      "nav": PresonalInfomation.ROUTE
+      "nav": WelcomePage.ROUTE
     },
   ];
   @override
@@ -221,7 +225,10 @@ class _DashboardState extends State<Dashboard> {
           for (int i = 0; i < svg_paths.length; i++)
             ListTile(
               onTap: () {
-                Navigator.pushNamed(context, svg_paths[i]["nav"]);
+                Navigator.pushNamed(
+                  context,
+                  svg_paths[i]["nav"],
+                );
               },
               leading: SvgPicture.asset(svg_paths[i]["svg-path"],
                   colorFilter: ColorFilter.mode(white, BlendMode.srcIn)),
