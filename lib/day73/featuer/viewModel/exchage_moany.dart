@@ -19,6 +19,10 @@ class ExchangeMaonyVM with ChangeNotifier {
     Currency(name: "ER", value: 1300),
   ];
 
+  int getlintghCurrnacyList ( ){
+    return currencyList.where((element) => element.isActive).length;
+  }
+
   toggleCurrency(int index) {
     currencyList[index].isActive = !currencyList[index].isActive;
     notifyListeners();

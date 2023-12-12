@@ -14,7 +14,10 @@ class Customfiled extends StatelessWidget {
       this.ontop,
       this.filterPattern = '[]',
       this.onchange,
-      this.controller}) {}
+      this.enable = true,
+      this.controller});
+
+  bool enable;
   String? lable;
   TextEditingController? controller;
   String? Function(String?)? validate;
@@ -30,6 +33,7 @@ class Customfiled extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 32.0, right: 24.0, left: 24.0),
       child: TextFormField(
+          enabled: enable,
           onChanged: onchange,
           onTap: ontop,
           readOnly: readOnly!,

@@ -21,11 +21,9 @@ class ExchangePage extends StatelessWidget {
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                  evm.currencyList.where((element) => element.isActive).length >
-                          0
-                      ? Icons.favorite
-                      : Icons.heart_broken),
+              child: Icon(evm.getlintghCurrnacyList() > 0
+                  ? Icons.favorite
+                  : Icons.heart_broken),
             ),
           )
         ],
@@ -36,9 +34,9 @@ class ExchangePage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Text(
-                "favourited currancy : ${evm.currencyList.where((element) => element.isActive).length}"),
+            Text("favourited currancy : ${evm.getlintghCurrnacyList()}"),
             Customfiled(
+              enable: evm.getlintghCurrnacyList() > 0 ? true : false,
               filterPattern: '[0-9]+',
               onchange: (String value) {
                 if (value != '') evm.setRialY = double.parse(value);
