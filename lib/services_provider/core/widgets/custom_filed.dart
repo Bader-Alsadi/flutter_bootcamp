@@ -1,6 +1,7 @@
 import 'package:app/services_provider/core/helper/ui_helper.dart';
 import 'package:app/services_provider/core/them/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Customfiled extends StatelessWidget {
   Customfiled(
@@ -11,13 +12,17 @@ class Customfiled extends StatelessWidget {
       this.readOnly = false,
       this.filedType,
       this.ontop,
-      this.controller});
+      this.filterPattern = '[]',
+      this.onchange,
+      this.controller}) {}
   String? lable;
   TextEditingController? controller;
   String? Function(String?)? validate;
   int? maxLines;
   bool? readOnly;
   void Function()? ontop;
+  void Function(String)? onchange;
+  String? filterPattern;
   TextInputType? filedType;
 
   @override
@@ -25,6 +30,7 @@ class Customfiled extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 32.0, right: 24.0, left: 24.0),
       child: TextFormField(
+          onChanged: onchange,
           onTap: ontop,
           readOnly: readOnly!,
           controller: this.controller,
@@ -35,6 +41,9 @@ class Customfiled extends StatelessWidget {
           style: const TextStyle(fontSize: 18.0),
           keyboardType: filedType ?? TextInputType.name,
           cursorColor: COLOR_PRIMARY,
+          inputFormatters: [
+            FilteringTextInputFormatter.allow(RegExp(filterPattern!))
+          ],
           decoration: getInputDecoration(
               hint: lable!,
               darkMode: isDarkMode(context),

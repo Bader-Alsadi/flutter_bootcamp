@@ -47,6 +47,17 @@ String? validateMobile(String? value) {
   return null;
 }
 
+String? validateNumber(String? value) {
+  String pattern = r'(^\+?[0-9]*$)';
+  RegExp regExp = RegExp(pattern);
+  if (value?.isEmpty ?? true) {
+    return "Empty value";
+  } else if (!regExp.hasMatch(value ?? '')) {
+    return "Enter only numriacl value";
+  } 
+  return null;
+}
+
 String? validateEmail(String? value) {
   String pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
