@@ -46,7 +46,7 @@ class Customfiled extends StatelessWidget {
           keyboardType: filedType ?? TextInputType.name,
           cursorColor: COLOR_PRIMARY,
           inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp(filterPattern!))
+            FilteringTextInputFormatter.deny(RegExp(filterPattern!))
           ],
           decoration: getInputDecoration(
               hint: lable!,

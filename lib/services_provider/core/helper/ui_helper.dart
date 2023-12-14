@@ -54,7 +54,7 @@ String? validateNumber(String? value) {
     return "Empty value";
   } else if (!regExp.hasMatch(value ?? '')) {
     return "Enter only numriacl value";
-  } 
+  }
   return null;
 }
 
@@ -63,13 +63,11 @@ String? validateEmail(String? value) {
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regex = RegExp(pattern);
   if (!regex.hasMatch(value ?? '')) {
-    return 'ادخل ايميل صحيح';
+    return "Ebter valid Email";
   } else {
     return null;
   }
 }
-
-
 
 bool isDarkMode(BuildContext context) {
   if (Theme.of(context).brightness == Brightness.light) {
