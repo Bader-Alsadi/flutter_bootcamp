@@ -1,16 +1,24 @@
+import 'package:app/firebase_app/note_app/core/constan/note_state_enum.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 class Note {
-  late String _title;
-  late String _description;
-  late List<Map> noteStats;
+  late int id;
+  late String title;
+  late String description;
+  late NoteStats noteStats;
 
-  String get title => this._title;
+  Note(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.noteStats});
 
-  set title(String value) => this._title = value;
-
-  String get description => this._description;
-
-  set description(String value) => this._description = value;
-
-
-  Note.fromColoction ()
+  Map<String, dynamic> toJosn() {
+    return {
+      "id": this.id,
+      "title": this.title,
+      "description": this.description,
+      "state": this.noteStats
+    };
+  }
 }
