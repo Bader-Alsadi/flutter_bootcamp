@@ -68,12 +68,16 @@ class HomePage extends StatelessWidget {
                           itemBuilder: (context, index) => Card(
                                   child: Column(
                                 children: [
+                                  // ClipRRect(
+                                  //   child: Image.network(
+                                  //       snapshot.data![index].image!),
+                                  // ),
                                   ListTile(
                                     title: Text(
                                       snapshot.data![index].title!,
                                     ),
                                     subtitle: Text(
-                                      snapshot.data![index].title!,
+                                      snapshot.data![index].content!,
                                     ),
                                   ),
                                   // addCommentpart(

@@ -18,8 +18,10 @@ import 'package:app/day48/featuer/pages/department/department_page.dart';
 import 'package:app/day49/featuer/views/catogry_page.dart';
 import 'package:app/day52/featuer/views/blog_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
+  
   runApp(const MyApp());
 }
 
@@ -60,6 +62,7 @@ void main() {
 // // stateless widget
 
 class MyApp extends StatelessWidget {
+ 
   const MyApp({super.key});
 
   // This widget is the root of your application.

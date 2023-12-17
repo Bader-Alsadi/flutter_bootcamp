@@ -85,16 +85,14 @@ class AddArtical extends StatelessWidget {
                           FormData data = FormData.fromMap({
                             "title": title.text,
                             "content": content.text,
-                            "image": image ??
-                                 MultipartFile.fromFileSync(image!.path,
-                                    filename: image_name),
+                            "image": MultipartFile.fromFileSync(image!.path,
+                                filename: image_name),
                           });
                           int code = await avm.addArtical(data, tokken);
 
                           if (code == 1200) {
                             showSnackBar(context, "succssfuly");
-                            Navigator.pushReplacementNamed(
-                                context, HomePage.ROUTE);
+                            Navigator.pop(context);
                           } else if (code == 1300) {
                             showSnackBar(context, "falid");
                           } else if (code == 404) {

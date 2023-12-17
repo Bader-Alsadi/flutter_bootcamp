@@ -9,9 +9,11 @@ import 'package:image_picker/image_picker.dart';
 
 class ArticalVM with ChangeNotifier {
   List<Article> _allArtical = [];
-int getleinth(){
-  return _allArtical.length;
-}
+
+  int getleinth() {
+    return _allArtical.length;
+  }
+
   Future<List<Article>> featchArticals() async {
     final response = await ApIHelper.dioConnect().get(APIURl.AERITCAL);
     Map<String, dynamic> result = await response.data["result"];
@@ -31,10 +33,13 @@ int getleinth(){
           data: data,
           options: Options(headers: {"Authorization": "Bearer $tokken"}));
       Map<String, dynamic> result = await response.data["result"];
-      addTolist(
-          article[0].value, article[1].value, article[2].value ?? "defult.png");
+      addTolist(article[0].value, article[1].value,
+          data.files.first.value.filename ?? "defult.png");
+      print("code : ${result["code"]}");
       return result["code"];
     } on DioException catch (e) {
+      print("code : ${e.response!.statusCode}");
+
       return e.response!.statusCode ?? 404;
     }
   }
@@ -50,5 +55,6 @@ int getleinth(){
     int id = _allArtical.isNotEmpty ? _allArtical.last.id! + 1 : 1;
     _allArtical
         .add(Article(id: id, title: title, content: content, image: image));
+    notifyListeners();
   }
 }

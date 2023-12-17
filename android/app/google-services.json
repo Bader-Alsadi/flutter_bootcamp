@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "56749356078",
+    "project_id": "mobile-bootcamp-2c0e6",
+    "storage_bucket": "mobile-bootcamp-2c0e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56749356078:android:2feef78db8468372a39bbf",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACi0zuxbb9Q8FnzAa_J7M3GOKneTtATLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56749356078:android:bc74e3a804685ce3a39bbf",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACi0zuxbb9Q8FnzAa_J7M3GOKneTtATLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

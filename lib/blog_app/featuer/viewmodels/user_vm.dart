@@ -10,7 +10,8 @@ class UserVM with ChangeNotifier {
   List<User> _alluser = [];
 
   Login(User user) async {
-     Response response;
+    print(user.email);
+    Response response;
     try {
       response =
           await ApIHelper.dioConnect().post(APIURl.LOGIN, data: user.toJson());
@@ -30,7 +31,6 @@ class UserVM with ChangeNotifier {
       return e.response!.statusCode;
     }
   }
-  
 
   register(User user) async {
     Response response;
@@ -50,7 +50,7 @@ class UserVM with ChangeNotifier {
       }
     } on DioException catch (e) {
       print(e.response!.statusCode);
-      return e.response!.statusCode??404;
+      return e.response!.statusCode ?? 404;
     }
   }
 }
