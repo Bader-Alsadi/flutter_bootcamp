@@ -2,6 +2,7 @@ import 'package:app/firebase_app/note_app_firebase/core/constan/note_state_enum.
 import 'package:app/firebase_app/note_app_firebase/featuer/model/note_modle.dart';
 import 'package:app/firebase_app/note_app_firebase/featuer/notes_VM/notes_VM.dart';
 import 'package:app/movie_app/core/theme/colors.dart';
+import 'package:app/services_provider/core/helper/ui_helper.dart';
 import 'package:app/services_provider/core/widgets/custom_elevbutton.dart';
 import 'package:app/services_provider/core/widgets/custom_filed.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          title.clear();
+          description.clear();
           newMethod(context, nvm);
         },
         child: Icon(Icons.add_comment_outlined),
@@ -57,8 +60,6 @@ class MainPage extends StatelessWidget {
                                               PopupMenuItem(
                                                 child: Text("update state"),
                                                 onTap: () {
-                                                  statu =
-                                                      notes[index].noteStats;
                                                   showDialog(
                                                       context: context,
                                                       builder: (context) =>
@@ -77,10 +78,10 @@ class MainPage extends StatelessWidget {
                                                                         groupValue: notes[index].noteStats,
                                                                         onChanged: e.index <= notes[index].noteStats!.index
                                                                             ? null
-                                                                            : (value) {
+                                                                            : (value) async {
                                                                                 notes[index].noteStats = value! as Status;
-                                                                                nvm.changeNoteState(index, notes[index].id!, notes[index].noteStats!);
-
+                                                                                var result = await nvm.changeNoteState(index, notes[index].id!, notes[index].noteStats!);
+                                                                                showSnackBar(context, result);
                                                                                 Navigator.pop(context);
                                                                               }))
                                                                     .toList()),
@@ -101,9 +102,12 @@ class MainPage extends StatelessWidget {
                                               ),
                                               PopupMenuItem(
                                                 child: Text("delete"),
-                                                onTap: () {
-                                                  nvm.deletNote(
-                                                      notes[index].id!, index);
+                                                onTap: () async {
+                                                  var result =
+                                                      await nvm.deletNote(
+                                                          notes[index].id!,
+                                                          index);
+                                                  showSnackBar(context, result);
                                                 },
                                               ),
                                             ])),
@@ -140,7 +144,7 @@ class MainPage extends StatelessWidget {
                       ? DropdownButtonFormField(
                           value: Status.get_stared,
                           onChanged: (value) {
-                            statu = value! as Status;
+                            statu = value!;
                           },
                           items: List.generate(
                               Status.values.length,
@@ -151,24 +155,24 @@ class MainPage extends StatelessWidget {
                   customButtomElev(
                     lable: id == null ? "add new note" : "edit new note",
                     backColor: black,
-                    onPressedFun: () {
+                    onPressedFun: () async {
                       if (id != null) {
-                        print("eisd");
-                        noVM.editNote(
+                        var result = await noVM.editNote(
                           index!,
                           id,
                           title.text,
                           description.text,
                         );
-                        title.clear();
-                        description.clear();
+                        showSnackBar(context, result);
                       } else {
                         Note note = Note(
                             title: title.text,
                             description: description.text,
                             noteStats: statu);
 
-                        noVM.addNote(note);
+                        var result = await noVM.addNote(note);
+                        print(result);
+                        showSnackBar(context, result);
                       }
 
                       Navigator.pop(context);
